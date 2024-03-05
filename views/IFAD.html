@@ -51,7 +51,7 @@
           <div class="col-md-6">
             <h5 id="complainant-info-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">II. Complainants Information</h5>
             <form action="/action_page.php">
-              <label for="quantity">a) How many Complainants are you? (You must be 2 in order for the Complaint to be admissible)</label>
+              <label>a) How many Complainants are you? (You must be 2 in order for the Complaint to be admissible)</label>
               <input id="complainant-quantity" type="number" name="quantity" min="2" placeholder="Enter number" class="form-control" style="background-color: ghostwhite;" required>
             </form>
             <br>
@@ -71,7 +71,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="option-a">a) The identity of complainants will be kept confidential if they request so of IFAD</label>
+                  <label>a) The identity of complainants will be kept confidential if they request so of IFAD</label>
                   <select id="confidentiality-option-a" class="form-control" style="background-color: ghostwhite;" required>
                     <option value="" disabled selected>choose your option</option>
                     <option>YES</option>
@@ -81,7 +81,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="option-b">b) Do you want your identity to be kept confidential?</label>
+                  <label>b) Do you want your identity to be kept confidential?</label>
                   <select id="confidentiality-option-b" class="form-control" style="background-color: ghostwhite;" required>
                     <option value="" disabled selected>choose your option</option>
                     <option>YES</option>
@@ -124,7 +124,7 @@
                     <input id="complainant-1-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>
                   </div>
                   <div class="col-md-6">
-                    <label id="complainant-1-phone-label" for="num1">Phone Number</label>
+                    <label id="complainant-1-phone-label">Phone Number</label>
                     <input id="complainant-1-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num1" style="background-color: ghostwhite;" required>
                   </div>
                 </div>
@@ -175,7 +175,7 @@
                   <input id="complainant-2-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>
                 </div>
                 <div class="col-md-6">
-                  <label id="complainant-2-phone-label" for="num2">Phone Number</label>
+                  <label id="complainant-2-phone-label">Phone Number</label>
                   <input id="complainant-2-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num2" style="background-color: ghostwhite;" required>
                 </div>
               </div>
@@ -369,7 +369,6 @@
            </div>
          </div>
        </div>
-     </div> 
    <br>
 
   <!-- vii) IFAD Level -->
@@ -402,6 +401,7 @@
       </div>
   </div>
 </div>
+</div> 
 
         <div class="text-right">
           <button type="submit" class="btn btn-primary" style="width: 150px; font-size: 18px; font-weight: bold;">Submit</button>
@@ -412,20 +412,38 @@
 </div>
   
     <script type="text/javascript">
-      document.getElementById("sidebarCollapse").addEventListener("click", function() {
-          document.getElementById("sidebar").classList.toggle("active");
-          closeAllSubmenus();
-      });
+        document.addEventListener("DOMContentLoaded", function() {
+            var sidebarState = sessionStorage.getItem("sidebarState");
+            if (sidebarState === "active") {
+                document.getElementById("sidebar").classList.add("active");
+            }
+        });
 
-      document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
-          item.addEventListener('click', function() {
-              document.getElementById("sidebar").classList.add("active");
-          });
-      });
+        document.getElementById("sidebarCollapse").addEventListener("click", function() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+            closeAllSubmenus();
 
-      function closeAllSubmenus() {
-          document.querySelectorAll("#sidebar .collapse.show").forEach(function(element) {
-              element.classList.remove("show");
-          });
-      }
-  </script>
+            var sidebarState = sidebar.classList.contains("active") ? "active" : "inactive";
+            sessionStorage.setItem("sidebarState", sidebarState);
+        });
+
+        document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
+            item.addEventListener('click', function() {
+                var sidebar = document.getElementById("sidebar");
+                if (!sidebar.classList.contains("active")) {
+                    sidebar.classList.add("active");
+                    sessionStorage.setItem("sidebarState", "active");
+                }
+            });
+        });
+
+        function closeAllSubmenus() {
+            document.querySelectorAll("#sidebar .collapse.show").forEach(function(element) {
+                element.classList.remove("show");
+            });
+        }
+
+    </script>
+  
+  </body>

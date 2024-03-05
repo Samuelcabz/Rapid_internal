@@ -11,15 +11,29 @@
     </div>
     
     <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var sidebarState = sessionStorage.getItem("sidebarState");
+            if (sidebarState === "active") {
+                document.getElementById("sidebar").classList.add("active");
+            }
+        });
 
         document.getElementById("sidebarCollapse").addEventListener("click", function() {
-            document.getElementById("sidebar").classList.toggle("active");
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
             closeAllSubmenus();
+
+            var sidebarState = sidebar.classList.contains("active") ? "active" : "inactive";
+            sessionStorage.setItem("sidebarState", sidebarState);
         });
 
         document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
             item.addEventListener('click', function() {
-                document.getElementById("sidebar").classList.add("active");
+                var sidebar = document.getElementById("sidebar");
+                if (!sidebar.classList.contains("active")) {
+                    sidebar.classList.add("active");
+                    sessionStorage.setItem("sidebarState", "active");
+                }
             });
         });
 
@@ -28,6 +42,6 @@
                 element.classList.remove("show");
             });
         }
-        
+
     </script>
 </body> 

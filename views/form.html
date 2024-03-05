@@ -21,7 +21,7 @@
               <div class="col-md-6">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <h5 class="card-title text-center" style="background-color: #264653; color: white; padding: 5px;"> Project Logframe Alignment</h5>
+                    <h5 class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;"> Project Logframe Alignment</h5>
                     <hr>
                     <div class="form-group">
                       <label for="logFrame">(Reflect Indicator Number)</label>
@@ -33,7 +33,7 @@
               <div class="col-md-6">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <h5 class="card-title text-center" style="background-color: #264653; color: white; padding: 5px;">AWPB Alignment</h5>
+                    <h5 class="card-title text-center" style="background-color: #264653; color: white; padding: 10px;">AWPB Alignment</h5>
                     <hr>
                     <div class="row">
                       <div class="col-md-6">
@@ -70,7 +70,7 @@
 
             <div class="card mb-4">
               <div class="card-body">
-                <h5 class="card-title text-center" style="background-color: #264653; color: white; padding: 5px;">Output</h5>
+                <h5 class="card-title text-center" style="background-color: #264653; color: white; padding: 10px;">Output</h5>
                 <hr>
                 <div>
                   <div class="form-group">
@@ -181,23 +181,46 @@
  </div>
 </div>
 
-  <script type="text/javascript">
-    
-    document.getElementById("sidebarCollapse").addEventListener("click", function() {
-        document.getElementById("sidebar").classList.toggle("active");
-        closeAllSubmenus();
-    });
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+      var sidebarState = sessionStorage.getItem("sidebarState");
+      if (sidebarState === "active") {
+          document.getElementById("sidebar").classList.add("active");
+      }
+  });
 
-    document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
-        item.addEventListener('click', function() {
-            document.getElementById("sidebar").classList.add("active");
-        });
-    });
+  document.getElementById("sidebarCollapse").addEventListener("click", function() {
+      var sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+      closeAllSubmenus();
 
-    function closeAllSubmenus() {
-        document.querySelectorAll("#sidebar .collapse.show").forEach(function(element) {
-            element.classList.remove("show");
-        });
-    }
+      var sidebarState = sidebar.classList.contains("active") ? "active" : "inactive";
+      sessionStorage.setItem("sidebarState", sidebarState);
+  });
 
+  document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
+      item.addEventListener('click', function() {
+          var sidebar = document.getElementById("sidebar");
+          if (!sidebar.classList.contains("active")) {
+              sidebar.classList.add("active");
+              sessionStorage.setItem("sidebarState", "active");
+          }
+      });
+  });
+
+  function closeAllSubmenus() {
+      document.querySelectorAll("#sidebar .collapse.show").forEach(function(element) {
+          element.classList.remove("show");
+      });
+  }
+
+</script>
+
+<script>
+  $(document).ready(function () {
+      $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggle(); // Toggle the sidebar visibility
+      });
+  });
   </script>
+  

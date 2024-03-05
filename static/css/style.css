@@ -59,7 +59,7 @@ a:focus {
     left: 0;
     width:50px;
     min-height: 100%;
-    z-index: 1;
+    z-index: 999;
     background: #264653;
     color: #fff;
     transition: all 0.3s;
@@ -93,11 +93,6 @@ a:focus {
     background: #fff;
 }
 
-
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
-    color: #fff;
-}
 
 #sidebar .list-unstyled.components li span.icon-text {
     visibility: hidden;
@@ -410,3 +405,9 @@ table {
     height: 100%;
     object-fit: cover;
 }
+
+.no-animation {
+    transition: none !important;
+}
+
+
