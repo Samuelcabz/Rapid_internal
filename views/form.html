@@ -148,7 +148,7 @@
 
                 <div class="form-group mt-3">
                   <label for="act_outputs">Activity Outputs/Highlights (vs. planned outputs/objectives, include issues/concerns requiring NPCO action)</label>
-                  <input class="form-control" id="act_outputs" placeholder="Enter Activity" style="background-color:ghostwhite;" required></input>
+                  <input type="text" class="form-control" id="act_outputs" placeholder="Enter Activity" style="background-color:ghostwhite;" required></input>
                 </div>
                 <div class="row mt-3">
                   <div class="col-md-6">
@@ -181,46 +181,6 @@
  </div>
 </div>
 
-<script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-      var sidebarState = sessionStorage.getItem("sidebarState");
-      if (sidebarState === "active") {
-          document.getElementById("sidebar").classList.add("active");
-      }
-  });
-
-  document.getElementById("sidebarCollapse").addEventListener("click", function() {
-      var sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
-      closeAllSubmenus();
-
-      var sidebarState = sidebar.classList.contains("active") ? "active" : "inactive";
-      sessionStorage.setItem("sidebarState", sidebarState);
-  });
-
-  document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
-      item.addEventListener('click', function() {
-          var sidebar = document.getElementById("sidebar");
-          if (!sidebar.classList.contains("active")) {
-              sidebar.classList.add("active");
-              sessionStorage.setItem("sidebarState", "active");
-          }
-      });
-  });
-
-  function closeAllSubmenus() {
-      document.querySelectorAll("#sidebar .collapse.show").forEach(function(element) {
-          element.classList.remove("show");
-      });
-  }
-
-</script>
-
-<script>
-  $(document).ready(function () {
-      $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggle(); // Toggle the sidebar visibility
-      });
-  });
-  </script>
+<script src="../static/js/sidebarscript.js"></script>
   
+</body>
