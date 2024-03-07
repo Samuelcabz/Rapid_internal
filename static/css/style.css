@@ -406,8 +406,6 @@ table {
     object-fit: cover;
 }
 
-.no-animation {
-    transition: none !important;
-}
+
 
 
