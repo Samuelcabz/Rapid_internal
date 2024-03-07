@@ -1,18 +1,12 @@
-
 {% include 'base.html' %}
 
 <body>
-
-  <title> Tracking Progress Form</title>
-   
-  <div class="wrapper">
-
-  {% include 'route/sidebar.html' %}
-
-  <div id="content">
-    <div class="container-fluid">
+    <div class="wrapper">
+        {% include 'route/sidebar.html' %}
+        <div id="content">
+            <div class="container-fluid">
       <div>
-        <div>
+        <form method="post" action="/Tracking_Form">
           <div class="card-body">
             <div class="text-center mb-4">
               <h4 style="background-color: #264653; color: #fff; padding: 10px;">TRACKING PROGRESS</h4>
@@ -25,7 +19,7 @@
                     <hr>
                     <div class="form-group">
                       <label for="logFrame">(Reflect Indicator Number)</label>
-                      <input type="text" class="form-control" id="logFrame" placeholder="Enter text" style="background-color:ghostwhite;" required>
+                      <input type="text" class="form-control" name="logFrame" placeholder="Enter text" style="background-color:ghostwhite;" >
                     </div>
                   </div>
                 </div>
@@ -39,7 +33,7 @@
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="AWPB">Indicate Number of AWPB Activity</label>
-                              <select class="form-control" id="AWPB" style="background-color:ghostwhite;" required>
+                              <select class="form-control" name="AWPB" style="background-color:ghostwhite;" >
                                   <option value="" disabled selected>Choose your option</option>
                                   <option>1</option>
                                   <option>2</option>
@@ -52,7 +46,7 @@
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="reflect_i">Reflect Corresponding Indicator Number</label>
-                              <select class="form-control" id="reflect_i" style="background-color:ghostwhite;" required>
+                              <select class="form-control" name="reflect_i" style="background-color:ghostwhite;" >
                                   <option value="" disabled selected>Choose your option</option>
                                   <option>1</option>
                                   <option>2</option>
@@ -76,7 +70,7 @@
                   <div class="form-group">
                     <div class="col-md">
                         <label for="act_title">Activity Title</label>
-                        <input type="text" class="form-control" id="act_title" placeholder="Enter title" style="background-color: ghostwhite;" required>
+                        <input type="text" class="form-control" name="act_title" placeholder="Enter title" style="background-color: ghostwhite;" >
                     </div>
                 </div>
                 <hr>
@@ -85,32 +79,32 @@
                         <h5 class="card-title text-center mb-2" style="margin-top: 20px;">Participants (if applicable)</h5> 
                         <div class="form-group">
                             <label for="POA">Profile of Attendees (e.g., RCUs, RPCs, MSMEs, FOs, etc.)</label>
-                            <input type="text" class="form-control" id="POA" placeholder="Enter Profile" style="background-color: ghostwhite;" required>
+                            <input type="text" class="form-control" name="POA" placeholder="Enter Profile" style="background-color: ghostwhite;" >
                         </div>
                         <div class="form-row">
                             <div class="col-md">
                                 <label for="Males">Male</label>
-                                <input type="number" class="form-control" id="Males" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required>
+                                <input type="number" class="form-control" name="Males" min="0" placeholder="Enter number" style="background-color: ghostwhite;" >
                             </div>
                             <div class="col-md">
                                 <label for="Females">Female</label>
-                                <input type="number" class="form-control" id="Females" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required>
+                                <input type="number" class="form-control" name="Females" min="0" placeholder="Enter number" style="background-color: ghostwhite;" >
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md">
                                 <label for="IP">IP</label>
-                                <input type="number" class="form-control" id="IP" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required>
+                                <input type="number" class="form-control" name="IP" min="0" placeholder="Enter number" style="background-color: ghostwhite;" >
                             </div>
                             <div class="col-md">
                                 <label for="Youth">Youth</label>
-                                <input type="number" class="form-control" id="Youth" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required>
+                                <input type="number" class="form-control" name="Youth" min="0" placeholder="Enter number" style="background-color: ghostwhite;" >
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md">
                                 <label for="PWD">PWD</label>
-                                <input type="number" class="form-control" id="PWD" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required>
+                                <input type="number" class="form-control" name="PWD" min="0" placeholder="Enter number" style="background-color: ghostwhite;" >
                             </div>
                         </div>
                     </div>
@@ -119,27 +113,27 @@
                       <div class="form-row" style="margin-top: 50px;">
                         <div class="col-md">
                             <label for="Date">Actual Date</label>
-                            <input type="date" class="form-control" id="Date" min="0" placeholder="Choose Date" style="background-color: ghostwhite;" required>
+                            <input type="date" class="form-control" name="Date" min="0" placeholder="Choose Date" style="background-color: ghostwhite;" >
                         </div>
                         <div class="col-md">
                             <label for="Venue">Venue</label>
-                            <input type="text" class="form-control" id="Venue" min="0" placeholder="Enter Venue" style="background-color: ghostwhite;" required>
+                            <input type="text" class="form-control" name="Venue" min="0" placeholder="Enter Venue" style="background-color: ghostwhite;" >
                         </div>
                     </div>
                     <div class="form-row" style="margin-top: 20px;">
                       <div class="col-md">
                           <label for="Resource">Resource Person</label>
-                          <input type="text" class="form-control" id="Resource" min="0" placeholder="Enter resource person" style="background-color: ghostwhite;" required>
+                          <input type="text" class="form-control" name="Resource" min="0" placeholder="Enter resource person" style="background-color: ghostwhite;" >
                       </div>
                       <div class="col-md">
                           <label for="NPCO">NPCO Lead Person/Unit</label>
-                          <input type="text" class="form-control" id="NPCO" min="0" placeholder="Enter lead Person" style="background-color: ghostwhite;" required>
+                          <input type="text" class="form-control" name="NPCO" min="0" placeholder="Enter lead Person" style="background-color: ghostwhite;" >
                       </div>
                   </div>                    
                         <div class="form-group row">
                             <div class="col-md">
                                 <label for="UB">Utilized Budget (estimated)</label>
-                                <input type="number" class="form-control" id="UB" min="0" placeholder="Enter estimated budget" style="background-color: ghostwhite;" required>
+                                <input type="number" class="form-control" name="UB" min="0" placeholder="Enter estimated budget" style="background-color: ghostwhite;" >
                             </div>
                         </div>
                     </div>
@@ -148,19 +142,19 @@
 
                 <div class="form-group mt-3">
                   <label for="act_outputs">Activity Outputs/Highlights (vs. planned outputs/objectives, include issues/concerns requiring NPCO action)</label>
-                  <input type="text" class="form-control" id="act_outputs" placeholder="Enter Activity" style="background-color:ghostwhite;" required></input>
+                  <input type="text" class="form-control" name="act_outputs" placeholder="Enter Activity" style="background-color:ghostwhite;" ></input>
                 </div>
                 <div class="row mt-3">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="other">Other Remarks</label>
-                      <input class="form-control" id="other" placeholder="Enter Remarks" style="background-color:ghostwhite;" required></input>
+                      <input class="form-control" name="other" placeholder="Enter Remarks" style="background-color:ghostwhite;" ></input>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="MOV">Submitted MOVs</label>
-                      <input class="form-control" id="MOV" placeholder="Enter MOV" style="background-color:ghostwhite;" required></input>
+                      <input class="form-control" name="MOV" placeholder="Enter MOV" style="background-color:ghostwhite;" ></input>
                     </div>
                   </div>
                 </div>
@@ -168,9 +162,9 @@
             </div>
           </div>
           <div class="text-right">
-            <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold;">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit" style="width: 150px; font-size: 18px; font-weight: bold;">Submit</button>
           </div>
-         </div>
+        </form>
         </div>
        </div>
       </div>
