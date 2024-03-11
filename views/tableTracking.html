@@ -1,114 +1,76 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 
-<body>
-    <div class="wrapper">
-        {% include 'route/sidebar.html' %}
-        <div id="content">
-            <div class="container-fluid">
-                <div>
-                    <div>
-                        <div class="card-body">
-                            <div class="text-center mb-4" style="margin-bottom: 1rem!important;">
-                                <h4 style="background-color: #264653; color: #fff; padding: 10px;">TRACKING PROGRESS</h4>
-                            </div>  
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="text-center mb-4 border-div">
-                                        <h5 style="color: #264653; padding: 10px; margin-bottom: 0;">TABLE LIST</h5>
-                                    </div>                                    
-                                    <div class="table-responsive">
-                                        <table id="dataTable">
-                                            <tr>
-                                                <th>Activity Title</th>
-                                                <th>Actual Date</th>
-                                                <th>Project Logframe Alignment</th>
-                                                <th>Number of AWPB Activity</th>
-                                                <th>Reflect Corresponding Indicator Number</th>
-                                            </tr>
-                                            <tr id="row1">
-                                                <td>Test</td>
-                                                <td>Test</td>
-                                                <td>Test</td>
-                                                <td>Test</td>
-                                                <td>Test</td>
-                                            </tr>
-                                    <tr id="row2">
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                    </tr>
-                                    <tr id="row3">
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                    </tr>
-                                    <tr id="row4">
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                    </tr>
-                                    <tr id="row5">
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                    </tr>
-                                    <tr id="row5">
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<link href='https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css' rel='stylesheet' type='text/css'>
+
+{% block content %}
+<div class="container-fluid">
+    <div class="card-body">
+        <div class="text-center mb-4" style="margin-bottom: 1rem!important;">
+            <h4 style="background-color: #264653; color: #fff; padding: 10px;">TRACKING PROGRESS</h4>
+        </div>  
+        <div class="card">
+            <div class="card-body">                              
+                <div class="table-responsive" style="overflow-x: auto;">
+                    <div id="data_info" class="box">
+                    <table id="dataTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Activity Title</th>
+                                <th>Actual Date</th>
+                                <th>Project Logframe Alignment</th>
+                                <th>Number of AWPB Activity</th>
+                                <th>Reflect Corresponding Indicator Number</th>
+                                <th>Action</th>
+                            </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in rows %}
+                            <tr>
+                                <td>{{ row['act_title'] }}</td>
+                                <td>{{ row['Date'] }}</td>
+                                <td>{{ row['logFrame'] }}</td>
+                                <td>{{ row['AWPB'] }}</td>
+                                <td>{{ row['reflect_i'] }}</td>
+                                <td>
+                                    <div style="display: flex; gap: 5px;">
+                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteData()">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                   </div>
+               </div>
             </div>
-        </div>                
+        </div>
     </div>
 </div>
-    
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            var sidebarState = sessionStorage.getItem("sidebarState");
-            if (sidebarState === "active") {
-                document.getElementById("sidebar").classList.add("active");
-            }
-        });
 
-        document.getElementById("sidebarCollapse").addEventListener("click", function() {
-            var sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("active");
-            closeAllSubmenus();
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
 
-            var sidebarState = sidebar.classList.contains("active") ? "active" : "inactive";
-            sessionStorage.setItem("sidebarState", sidebarState);
-        });
-
-        document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
-            item.addEventListener('click', function() {
-                var sidebar = document.getElementById("sidebar");
-                if (!sidebar.classList.contains("active")) {
-                    sidebar.classList.add("active");
-                    sessionStorage.setItem("sidebarState", "active");
-                }
-            });
-        });
-
-        function closeAllSubmenus() {
-            document.querySelectorAll("#sidebar .collapse.show").forEach(function(element) {
-                element.classList.remove("show");
-            });
+<script>
+    function eventFired(type) {
+        let eventInfo = document.querySelector('#data_info');
+        if (type !== 'Search' && type !== 'Page' && type !== 'Order') { 
+            eventInfo.innerHTML += '<div>' + type + ' event - ' + new Date().getTime() + '</div>';
+            eventInfo.scrollTop = eventInfo.scrollHeight;
         }
+    }
+    
+    $(document).ready(function() {
+        let dataTable = new DataTable('#dataTable', {
+            searching: true
+        });
+        dataTable.on('order.dt', () => eventFired('Order'))
+                 .on('search.dt', () => eventFired('Search'))
+                 .on('page.dt', () => eventFired('Page'));
+    });
+</script>
 
-    </script>
-</body> 
+<script src="../static/js/sidebarscript.js"></script>
+
+{% endblock %}
