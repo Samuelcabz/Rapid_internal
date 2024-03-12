@@ -1,0 +1,20 @@
+
+    <link href="/static/psalm_static/dcf_static/assets/vendors2/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <link href="/static/psalm_static/dcf_static/assets/vendors2/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/static/psalm_static/dcf_static/assets/vendors2/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/static/psalm_static/dcf_static/assets/vendors2/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/static/psalm_static/dcf_static/assets/vendors2/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+
+
+
+
+        <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../static/psalm_static/dcf_static/assets/vendors2/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
