@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint
+from flask import Flask, render_template, Blueprint, request
 from modules.Connections import mysql
 
 dbs = mysql('localhost','root','','dashboard_table')
@@ -6,7 +6,7 @@ app = Flask(__name__,template_folder="views")
 app = Blueprint("franz",__name__)
 
 
-@app.route("/IFAD_Form")
+@app.route("/IFAD_Form",methods=['POST','GET'])
 def ifadForm():
     return render_template("IFAD.html")
 

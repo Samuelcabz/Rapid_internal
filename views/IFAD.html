@@ -1,67 +1,68 @@
 {% extends 'base.html' %}
-  {% block content %}
 
-  <title>IFAD Form</title>
+{% block content %}
+
+<title>IFAD Form</title>
 
 <div class="wrapper">
-<div id="content">
-
-  <div class="card-body">
-  <h5 class="text-center" style="background-color: #264653; color:#ffffff; padding: 10px;">IFAD Complaints procedure & the enhanced complaints procedure submission form </h5>
-  <div class="text-center mb-4">
-    <label>Alleged non-compliance with its social and environmental policies and mandatory aspects of its social, environmental and climate assessment procedures (SECAP)</label>
-  </div>
-  <br>
-
-  <div class="container-fluid">
-    <div class="card">
-      <div class="card-body">
-        <!-- i) NATURE OF COMPLAINT -->
-        <div class="row">
-          <div class="col-md-6">
-            <h5 id="nature-complaint-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">I. Nature of The Complaint</h5>
-            <div class="dropdown">
-              <div class="form-group">
-                <label id="complaint-type-label">What complaint are you making to IFAD? (Choose the one(s) applicable to your complaint)</label>
-                <select id="complaint-type" class="form-control" style="background-color: ghostwhite;" required>
-                  <option value="" disabled selected>choose your option</option>
-                  <option>Complaint relating to individuals/communities believing they are or may be adversely affected by an IFAD funded project </option>
-                  <option>Complaint relating to IFAD's failure to apply its Social and Environmental Policies </option>
-                  <option>Complaint relating to IFAD's failure to apply the Mandatory Aspects of </option>
-                </select>
+  <div id="content_griev">
+    
+    <div class="card-body">
+      <h5 class="text-center" style="background-color: #264653; color:#ffffff; padding: 10px;">IFAD Complaints procedure & the enhanced complaints procedure submission form </h5>
+      <div class="text-center mb-4">
+        <label>Alleged non-compliance with its social and environmental policies and mandatory aspects of its social, environmental and climate assessment procedures (SECAP)</label>
+      </div>
+      <br>
+      
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <!-- i) NATURE OF COMPLAINT -->
+            <div class="row">
+              <div class="col-md-6">
+                <h5 id="nature-complaint-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">I. Nature of The Complaint</h5>
+                <div class="dropdown">
+                  <div class="form-group">
+                    <label id="complaint-type-label">What complaint are you making to IFAD? (Choose the one(s) applicable to your complaint)</label>
+                    <select id="complaint-type" class="form-control" style="background-color: ghostwhite;" required>
+                      <option value="" disabled selected>choose your option</option>
+                      <option>Complaint relating to individuals/communities believing they are or may be adversely affected by an IFAD funded project </option>
+                      <option>Complaint relating to IFAD's failure to apply its Social and Environmental Policies </option>
+                      <option>Complaint relating to IFAD's failure to apply the Mandatory Aspects of </option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <div class="dropdown">
+                  <div class="form-group">
+                    <label id="secap-label">Choose SECAP</label>
+                    <select id="secap" class="form-control" style="background-color: ghostwhite;" required>
+                      <option value="" disabled selected>choose your option</option>
+                      <option>SECAP 2015</option>
+                      <option>SECAP 2017</option>
+                      <option>SECAP 2021</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h5 id="complainant-info-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">II. Complainants Information</h5>
+                <form action="/action_page.php">
+                  <label>a) How many Complainants are you? (You must be 2 in order for the Complaint to be admissible)</label>
+                  <input id="complainant-quantity" type="number" name="quantity" min="2" placeholder="Enter number" class="form-control" style="background-color: ghostwhite;" required>
+                </form>
+                <br>
+                <div class="form-group">
+                  <label id="nationality-label">b) Are you nationals of the concerned country or living in the area? (Complainants must be nationals of the country concerned and/or living in the project area)</label>
+                  <select id="nationality" class="form-control" style="background-color: ghostwhite;" required>
+                    <option value="" disabled selected>choose your option</option>
+                    <option>YES</option>
+                    <option>NO</option>
+                  </select>
+                </div>
               </div>
             </div>
             <br>
-            <div class="dropdown">
-              <div class="form-group">
-                <label id="secap-label">Choose SECAP</label>
-                <select id="secap" class="form-control" style="background-color: ghostwhite;" required>
-                  <option value="" disabled selected>choose your option</option>
-                  <option>SECAP 2015</option>
-                  <option>SECAP 2017</option>
-                  <option>SECAP 2021</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <h5 id="complainant-info-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">II. Complainants Information</h5>
-            <form action="/action_page.php">
-              <label>a) How many Complainants are you? (You must be 2 in order for the Complaint to be admissible)</label>
-              <input id="complainant-quantity" type="number" name="quantity" min="2" placeholder="Enter number" class="form-control" style="background-color: ghostwhite;" required>
-            </form>
-            <br>
-            <div class="form-group">
-              <label id="nationality-label">b) Are you nationals of the concerned country or living in the area? (Complainants must be nationals of the country concerned and/or living in the project area)</label>
-              <select id="nationality" class="form-control" style="background-color: ghostwhite;" required>
-                <option value="" disabled selected>choose your option</option>
-                <option>YES</option>
-                <option>NO</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <br>
             <!-- iii) CONFIDENTIALITY -->
             <h5 id="confidentiality-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">III. Confidentiality</h5>
             <div class="row">
@@ -94,7 +95,7 @@
         </div>
       </div>
       <br>
-
+      
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
@@ -113,7 +114,7 @@
                     <input id="complainant-1-title" type="text" class="form-control" placeholder="Enter Title" style="background-color: ghostwhite;" required>
                   </div>
                 </div>
-          
+                
                 <div class="row">
                   <div class="col-md-6">
                     <label id="complainant-1-organization-label">Organisation</label>
@@ -124,20 +125,20 @@
                     <input id="complainant-1-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num1" style="background-color: ghostwhite;" required>
                   </div>
                 </div>
-    
-    
+                
+                
                 <label id="complainant-1-email-label">Email</label>
                 <input id="complainant-1-email" type="email" class="form-control" placeholder="Enter Email" style="background-color: ghostwhite;" required>
               </div>
               <div class="col-md-6">
                 <h5 id="location-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">Location</h5>
-
+                
                 <label id="complainant-1-address-label">Your address/location</label>
                 <input id="complainant-1-address" type="text" class="form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" required>
-
+                
                 <label id="complainant-1-mailing-address-label">Mailing Address (if different)</label>
                 <input id="complainant-1-mailing-address" type="text" class="form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" required>
-
+                
                 <label id="complainant-1-additional-guidance-label">Additional guidance on how to locate you (if applicable)</label>
                 <input id="complainant-1-additional-guidance" type="text" class="form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" required>
               </div>
@@ -145,265 +146,275 @@
           </div>
         </div>
       </div>
-    <br>
-
-    <div class="container-fluid">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 id="complainant-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">B) Complainant 2</h5>
-              <!-- Complainant 2 information -->
-              <div class="row">
-                <div class="col-md-6">
-                  <label id="complainant-2-fullname-label">Full Name</label>
-                  <input id="complainant-2-fullname" type="text" class="form-control" placeholder="Enter Name" style="background-color: ghostwhite;" required>
+      <br>
+      
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 id="complainant-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">B) Complainant 2</h5>
+                <!-- Complainant 2 information -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <label id="complainant-2-fullname-label">Full Name</label>
+                    <input id="complainant-2-fullname" type="text" class="form-control" placeholder="Enter Name" style="background-color: ghostwhite;" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label id="complainant-2-title-label">Title</label>
+                    <input id="complainant-2-title" type="text" class="form-control" placeholder="Enter Title" style="background-color: ghostwhite;" required>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label id="complainant-2-title-label">Title</label>
-                  <input id="complainant-2-title" type="text" class="form-control" placeholder="Enter Title" style="background-color: ghostwhite;" required>
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <label id="complainant-2-organization-label">Organisation</label>
+                    <input id="complainant-2-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label id="complainant-2-phone-label">Phone Number</label>
+                    <input id="complainant-2-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num2" style="background-color: ghostwhite;" required>
+                  </div>
                 </div>
+                
+                <label id="complainant-2-email-label">Email </label>
+                <input id="complainant-2-email" type="email" class="form-control" placeholder="Enter Email" style="background-color: ghostwhite;" required>
               </div>
-    
-              <div class="row">
-                <div class="col-md-6">
-                  <label id="complainant-2-organization-label">Organisation</label>
-                  <input id="complainant-2-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>
-                </div>
-                <div class="col-md-6">
-                  <label id="complainant-2-phone-label">Phone Number</label>
-                  <input id="complainant-2-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num2" style="background-color: ghostwhite;" required>
-                </div>
+              <div class="col-md-6">
+                <h5 id="location-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">LOCATION</h5>
+                
+                <label id="complainant-2-address-label">Your address/location</label>
+                <input id="complainant-2-address" type="text" class="form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" required>
+                
+                <label id="complainant-2-mailing-address-label">Mailing Address (if different) </label>
+                <input id="complainant-2-mailing-address" type="text" class="form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" required>
+                
+                <label id="complainant-2-additional-guidance-label">Additional guidance on how to locate you (if applicable)</label>
+                <input id="complainant-2-additional-guidance" type="text" class="form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" required>
               </div>
-    
-              <label id="complainant-2-email-label">Email </label>
-              <input id="complainant-2-email" type="email" class="form-control" placeholder="Enter Email" style="background-color: ghostwhite;" required>
-            </div>
-            <div class="col-md-6">
-              <h5 id="location-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">LOCATION</h5>
-
-              <label id="complainant-2-address-label">Your address/location</label>
-              <input id="complainant-2-address" type="text" class="form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" required>
-
-              <label id="complainant-2-mailing-address-label">Mailing Address (if different) </label>
-              <input id="complainant-2-mailing-address" type="text" class="form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" required>
-
-              <label id="complainant-2-additional-guidance-label">Additional guidance on how to locate you (if applicable)</label>
-              <input id="complainant-2-additional-guidance" type="text" class="form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" required>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <br>
-  
-</head>
-<body>
-  <div class="card">
-    <div class="card-body"> 
-           <div class="button-container d-flex justify-content-between">
-            <div class="text-left">
-    <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
-    </div>
-    <div class="text-right">
-      <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Delete Row</button>
-      </div>
-    </div>
-
-      <div class="table-responsive">
-<table id="myTable">
-    <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Title/Affiliation</th>
-          <th>Contact Information</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><input type="text"required></td>
-            <td><input type="text"required></td>
-            <td><input type="text"required></td>
-            <td><input type="text"required></td>
-        </tr>       
-    </tbody>
-</table>
-    </div>
-    </div>
-  </div> 
-
-    <div class="container-fluid">
+      <br>
+      
+    </head>
+    <body>
       <div class="card">
-        <div class="card-body">
-          <h5 id="ifad-project-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">V. IFAD Project / programme of concern and nature of concern</h5>
-          <label id="ifad-project-concern-label">a) Which IFAD-supported project/programme are you concerned about? (please provide the Project/Programme name, if known):</label>
-          <input id="ifad-project-concern" type="text" class="form-control" style="background-color: ghostwhite;" required>
-
-          <label id="ifad-project-description-label">b) Please provide a short description of your concerns about the project/programme. Please describe, as well, the types of Environmental and Social impacts that may occur, or have occurred, as a result.</label>
-          <textarea id="ifad-project-description" class="form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" required></textarea>
-
-          <label id="ifad-project-situation-label">c) When did the situation that raised your concerns start developing? (Please note that complaints must concern projects/programmes currently under design/implementation. Complaints concerning projects/programmes that preceded the operationalization of SECAP in 1/1/2015, projects that have been closed for a period of 24 months or more will not be eligible).</label>
-          <textarea id="ifad-project-situation" class="form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" required></textarea>
-        </div>
-      </div>
-    </div>
-  <br>
-
-  <div class="container-fluid">
-    <!-- vi) PROJECT LEVEL -->
-    <div class="card mb-4">
-      <div class="card-body">
-        <h5 id="project-level-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">VI. Project Level</h5>
-        <!-- Input fields for project level concerns -->
-
-        <div>
-          <label id="raised-complaint-label">a) Have you raised your complaint with government representatives or NGO(s) responsible for planning or executing the project or programme or the Lead Agency or any other agency acting on behalf of IFAD?</label>
-          <select id="raised-complaint" class="form-control" style="background-color: ghostwhite;" required>
-            <option value="" disabled selected>choose your option</option>
-            <option>YES</option>
-            <option>NO</option>
-          </select>
-        </div>
-
-          <br>
-
-           <label style="font-weight: bold;">If Yes,</label>
-           <div class="button-container d-flex justify-content-between">
+        <div class="card-body"> 
+          <div class="button-container d-flex justify-content-between">
             <div class="text-left">
-    <button class="btn" id="addRowBtn2" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
-    </div>
-    <div class="text-right">
-      <button class="btn" id="addRowBtn2" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
-      </div>
-    </div>
-           <div class="card">
-            <div class="card-body"> 
-              <div class="table-responsive">
-        <table id="myTable2">
-            <thead>
-                <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Title/Affiliation</th>
-                <th>Estimated Date of Contact</th>
-                <th>Nature of Communication</th>
-                <th>Response from the Individual</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="text"required></td>
-                    <td><input type="text"required></td>
-                    <td><input type="text"required></td>
-                    <td><input type="date"required></td>
-                    <td><input type="text"required></td>
-                    <td><input type="text"required></td>
-                </tr>       
-            </tbody>
-        </table>
+              <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
             </div>
+            <div class="text-right">
+              <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Delete Row</button>
             </div>
-          </div> 
+          </div>
           
-              <div>
-                <label for="complaint-unsatisfactory-response">b) Please explain why, if the response or actions taken are not satisfactory.</label>
-                <input type="text" id="complaint-unsatisfactory-response" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
+          <div class="table-responsive">
+            <table id="myTable">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Title/Affiliation</th>
+                  <th>Contact Information</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text"required></td>
+                  <td><input type="text"required></td>
+                  <td><input type="text"required></td>
+                  <td><input type="text"required></td>
+                </tr>       
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> 
+      
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <h5 id="ifad-project-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">V. IFAD Project / programme of concern and nature of concern</h5>
+            <label id="ifad-project-concern-label">a) Which IFAD-supported project/programme are you concerned about? (please provide the Project/Programme name, if known):</label>
+            <input id="ifad-project-concern" type="text" class="form-control" style="background-color: ghostwhite;" required>
+            
+            <label id="ifad-project-description-label">b) Please provide a short description of your concerns about the project/programme. Please describe, as well, the types of Environmental and Social impacts that may occur, or have occurred, as a result.</label>
+            <textarea id="ifad-project-description" class="form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" required></textarea>
+            
+            <label id="ifad-project-situation-label">c) When did the situation that raised your concerns start developing? (Please note that complaints must concern projects/programmes currently under design/implementation. Complaints concerning projects/programmes that preceded the operationalization of SECAP in 1/1/2015, projects that have been closed for a period of 24 months or more will not be eligible).</label>
+            <textarea id="ifad-project-situation" class="form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" required></textarea>
+          </div>
+        </div>
+      </div>
+      <br>
+      
+      <div class="container-fluid">
+        <!-- vi) PROJECT LEVEL -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 id="project-level-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">VI. Project Level</h5>
+            <!-- Input fields for project level concerns -->
+            
+            <div>
+              <label id="raised-complaint-label">a) Have you raised your complaint with government representatives or NGO(s) responsible for planning or executing the project or programme or the Lead Agency or any other agency acting on behalf of IFAD?</label>
+              <select id="raised-complaint" class="form-control" style="background-color: ghostwhite;" required>
+                <option value="" disabled selected>choose your option</option>
+                <option>YES</option>
+                <option>NO</option>
+              </select>
+            </div>
+            
+            <br>
+            
+            <label style="font-weight: bold;">If Yes,</label>
+            <div class="button-container d-flex justify-content-between">
+              <div class="text-left">
+                <button class="btn" id="addRowBtn2" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
               </div>
-              <div>
-                <label for="complaint-resolution">c) How do you wish to see the complaint resolved? Do you have any other matters, evidence, or facts (including supporting documents) that you would like to share?</label>
-                <input type="text" id="complaint-resolution" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
+              <div class="text-right">
+                <button class="btn" id="addRowBtn2" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
               </div>
-              <br>          
-           </div>
-         </div>
-       </div>
-   <br>
-
-  <!-- vii) IFAD Level -->
-<div class="container-fluid">
-  <div class="card mb-4">
-      <div class="card-body">
-          <h5 class="text-center mb-4" style="background-color: #264653; color: #ffffff; padding: 10px;">VII. IFAD Level</h5>
-          <!-- Input fields for IFAD level concerns -->
-
-          <div class="form-group">
+            </div>
+            <div class="card">
+              <div class="card-body"> 
+                <div class="table-responsive">
+                  <table id="myTable2">
+                    <thead>
+                      <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Title/Affiliation</th>
+                        <th>Estimated Date of Contact</th>
+                        <th>Nature of Communication</th>
+                        <th>Response from the Individual</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text"required></td>
+                        <td><input type="text"required></td>
+                        <td><input type="text"required></td>
+                        <td><input type="date"required></td>
+                        <td><input type="text"required></td>
+                        <td><input type="text"required></td>
+                      </tr>       
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> 
+            
+            <div>
+              <label for="complaint-unsatisfactory-response">b) Please explain why, if the response or actions taken are not satisfactory.</label>
+              <input type="text" id="complaint-unsatisfactory-response" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
+            </div>
+            <div>
+              <label for="complaint-resolution">c) How do you wish to see the complaint resolved? Do you have any other matters, evidence, or facts (including supporting documents) that you would like to share?</label>
+              <input type="text" id="complaint-resolution" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
+            </div>
+            <br>          
+          </div>
+        </div>
+      </div>
+      <br>
+      
+      <!-- vii) IFAD Level -->
+      <div class="container-fluid">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="text-center mb-4" style="background-color: #264653; color: #ffffff; padding: 10px;">VII. IFAD Level</h5>
+            <!-- Input fields for IFAD level concerns -->
+            
+            <div class="form-group">
               <label for="ifad-disagreement">a) Do you disagree with the response from the IFAD Country team and Regional Division in relation to your complaint?</label>
               <select id="ifad-disagreement" class="form-control" style="background-color: ghostwhite;" required>
-                  <option value="" disabled selected>Choose your option</option>
-                  <option>YES</option>
-                  <option>NO</option>
+                <option value="" disabled selected>Choose your option</option>
+                <option>YES</option>
+                <option>NO</option>
               </select>
+            </div>
+            
+            <label for="ifad-response-details">b) Please provide the details of the response from the IFAD Country Team and Regional Division in relation to your complaint</label>
+            <textarea id="ifad-response-details" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
+            
+            <label for="ifad-unsatisfactory-explanation">c) Please explain why, if the response or actions taken are not satisfactory</label>
+            <textarea id="ifad-unsatisfactory-explanation" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
+            
+            <label for="ifad-desired-resolution">d) How do you wish to see the complaint resolved?</label>
+            <textarea id="ifad-desired-resolution" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
+            
+            <label for="ifad-other-matters">e) Do you have any other matters or facts (including supporting documents) that you would like to share?</label>
+            <textarea id="ifad-other-matters" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
           </div>
-
-          <label for="ifad-response-details">b) Please provide the details of the response from the IFAD Country Team and Regional Division in relation to your complaint</label>
-          <textarea id="ifad-response-details" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
-
-          <label for="ifad-unsatisfactory-explanation">c) Please explain why, if the response or actions taken are not satisfactory</label>
-          <textarea id="ifad-unsatisfactory-explanation" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
-
-          <label for="ifad-desired-resolution">d) How do you wish to see the complaint resolved?</label>
-          <textarea id="ifad-desired-resolution" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
-
-          <label for="ifad-other-matters">e) Do you have any other matters or facts (including supporting documents) that you would like to share?</label>
-          <textarea id="ifad-other-matters" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
-      </div>
-  </div>
-</div>
-</div> 
-
-        <div class="text-right">
-          <button type="submit" class="btn btn-primary" style="width: 150px; font-size: 18px; font-weight: bold;">Submit</button>
         </div>
       </div>
+    </div> 
+    
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" style="width: 150px; font-size: 18px; font-weight: bold;">Submit</button>
     </div>
-  </div>  
+  </div>
 </div>
-  
+</div>  
+</div>
+
 <script src="../static/js/sidebarscript.js"></script>
 <script>
   document.getElementById("addRowBtn").addEventListener("click", function() {
-      var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-      var newRow = table.insertRow(table.rows.length);
-      
-      for (var i = 0; i < 4; i++) {
-          var cell = newRow.insertCell(i);
-          var input = document.createElement("input");
-          input.type = "text";      
-          cell.appendChild(input);
-        }
-
-        
-      {
-        
-        var actionCell = newRow.insertCell(4);
-        var deleteButton = document.createElement("button");
-        deleteButton.className = "deleteBtn";
-        deleteButton.textContent = "Delete";
-        deleteButton.onclick = function() {
-            deleteRow(this);
-        };
-        actionCell.appendChild(deleteButton);
+    var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+    
+    for (var i = 0; i < 4; i++) {
+      var cell = newRow.insertCell(i);
+      var input = document.createElement("input");
+      input.type = "text";      
+      cell.appendChild(input);
     }
-
+    
+    
+    {
+      
+      var actionCell = newRow.insertCell(4);
+      var deleteButton = document.createElement("button");
+      deleteButton.className = "deleteBtn";
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        deleteRow(this);
+      };
+      actionCell.appendChild(deleteButton);
+    }
+    
     function deleteRow(button) {
-        var row = button.parentNode.parentNode;
-        row.parentNode.removeChild(row);
+      var row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
     }
-      
+    
   });
-
+  
   document.getElementById("addRowBtn2").addEventListener("click", function() {
-        var table = document.getElementById("myTable2").getElementsByTagName('tbody')[0];
-        var newRow = table.insertRow(table.rows.length);
-        
-        for (var i = 0; i < 6; i++) {
-            var cell = newRow.insertCell(i);
-            var input = document.createElement("input");
-            input.type = i === 3 ? "date" : "text";
-            cell.appendChild(input);
-        }
-    });
-
+    var table = document.getElementById("myTable2").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+    
+    for (var i = 0; i < 6; i++) {
+      var cell = newRow.insertCell(i);
+      var input = document.createElement("input");
+      input.type = i === 3 ? "date" : "text";
+      cell.appendChild(input);
+    }
+  });
+  
+  $onload(function(){
+    if(URL_ARGS['qs']!="internal"){
+      var sidebar = $ID("sidebar")
+      sidebar.parentNode.querySelectorAll("#sidebar")[0].remove()
+    }
+  })
 </script>
 {%endblock%}
+
+
+
+
