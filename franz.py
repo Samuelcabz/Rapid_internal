@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, Blueprint
+from flask import Flask, render_template, Blueprint
 from modules.Connections import mysql
 
-dbs = mysql('localhost','root','','tracking_progress')
+dbs = mysql('localhost','root','','dashboard_table')
+app = Flask(__name__,template_folder="views")
 app = Blueprint("franz",__name__)
 
 

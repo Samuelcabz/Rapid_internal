@@ -1,9 +1,9 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 
 <body>
     <div class="wrapper">
-        {% include 'route/sidebar.html' %}
-        <div id="content">
+
+        {% block content %}
             <div class="container-fluid">
                 <div>
                     <div>
@@ -78,4 +78,4 @@
             }
             
     </script>
-</body>
+{% endblock %}

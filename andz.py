@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, Blueprint, jsonify
+from flask import Flask, render_template, Blueprint
 from modules.Connections import mysql
 
-dbs = mysql('localhost','root','','ojt')
+dbs = mysql('localhost','root','','dashboard_table')
+app = Flask(__name__,template_folder="views")
 app = Blueprint("andz",__name__)
-
 
 
 @app.route("/Registration_Form")
