@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.getElementById("sidebar");
     const toggleSidebarBtn = document.getElementById("sidebarCollapse");
     const sidebarState = localStorage.getItem("sidebarState");
-
     if (sidebarState === "open") {
-        document.getElementById("sidebar").classList.add("active");
+        sidebar.classList.add("active");
     }
 
     toggleSidebarBtn.addEventListener("click", function() {
-        const sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle("active");
         closeAllSubmenus();
 
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll('.list-unstyled.components .dropdown-toggle').forEach(function(item) {
         item.addEventListener('click', function() {
-            const sidebar = document.getElementById("sidebar");
             sidebar.classList.add("active");
             localStorage.setItem("sidebarState", "open");
         });
@@ -28,4 +26,17 @@ document.addEventListener("DOMContentLoaded", function() {
             element.classList.remove("show");
         });
     }
+
+    if (!sidebar.innerHTML.trim()) {
+        fetchSidebarContent();
+    }
 });
+
+function fetchSidebarContent() {
+    fetch("sidebar.html")
+        .then(response => response.text())
+        .then(data => {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.innerHTML = data;
+        });
+}

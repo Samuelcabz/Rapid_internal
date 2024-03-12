@@ -253,46 +253,32 @@ table {
     font-family: Arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     background: linear-gradient(to bottom, #ffffff, #f8f8f8);
-    border:#070707 ;
+    border:#adadad ;
   }
   
   th, td {
-    padding: 8px 10px;
+    padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #adadad;
-    border-right: 1px solid #adadad;
-    border-left: 1px solid #adadad;
-}
-
-@media (max-width: 768px) {
-    th, td {
-        padding: 6px;
-        font-size: 12px; 
-    }
-}
-
+    border-right: 1.5px solid  #adadad;
+    border-left: 1.5px solid  #adadad;
+    
+  }
   
   th {
     background-color: #264653;
     color: white;
+    text-transform: uppercase;
     font-weight: 600;
-    font-size: 12.5px;
+    font-size: 14px;
     border-right: 1.5px solid white;
     text-align: center;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-}
-
-@media (max-width: 768px) {
-    th {
-        font-size: 11px;
-    }
-}
-
+  }
   
   th:last-child {
     border-right: none;
@@ -420,18 +406,6 @@ table {
     object-fit: cover;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-30px);
-    }
-    60% {
-        transform: translateY(-15px);
-    }
-}
 
-.Toastify__toast--bounceIn {
-    animation: bounce 0.7s ease-in-out;
-}
+
+
