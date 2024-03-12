@@ -7,8 +7,7 @@ app = Blueprint("franz",__name__)
 
 @app.route("/IFAD_Form")
 def ifadForm():
-    is_public = request.args["q"]
-    return render_template("IFAD.html",is_public=is_public)
+    return render_template("IFAD.html")
 
 @app.route("/IFAD_Table")
 def table_IFAD():
