@@ -23,8 +23,8 @@
                 <h5 id="nature-complaint-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">I. Nature of The Complaint</h5>
                 <div class="dropdown">
                   <div class="form-group">
-                    <label id="complaint-type-label">What complaint are you making to IFAD? (Choose the one(s) applicable to your complaint)</label>
-                    <select id="complaint-type" class="form-control" style="background-color: ghostwhite;" required>
+                    <label>What complaint are you making to IFAD? (Choose the one(s) applicable to your complaint)</label>
+                    <select id="type-complaint" class="form-control" style="background-color: ghostwhite;" required>
                       <option value="" disabled selected>choose your option</option>
                       <option>Complaint relating to individuals/communities believing they are or may be adversely affected by an IFAD funded project </option>
                       <option>Complaint relating to IFAD's failure to apply its Social and Environmental Policies </option>
@@ -35,8 +35,8 @@
                 <br>
                 <div class="dropdown">
                   <div class="form-group">
-                    <label id="secap-label">Choose SECAP</label>
-                    <select id="secap" class="form-control" style="background-color: ghostwhite;" required>
+                    <label>Choose SECAP</label>
+                    <select id="SECAP" class="form-control" style="background-color: ghostwhite;" required>
                       <option value="" disabled selected>choose your option</option>
                       <option>SECAP 2015</option>
                       <option>SECAP 2017</option>
@@ -53,7 +53,7 @@
                 </form>
                 <br>
                 <div class="form-group">
-                  <label id="nationality-label">b) Are you nationals of the concerned country or living in the area? (Complainants must be nationals of the country concerned and/or living in the project area)</label>
+                  <label>b) Are you nationals of the concerned country or living in the area? (Complainants must be nationals of the country concerned and/or living in the project area)</label>
                   <select id="nationality" class="form-control" style="background-color: ghostwhite;" required>
                     <option value="" disabled selected>choose your option</option>
                     <option>YES</option>
@@ -69,7 +69,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>a) The identity of complainants will be kept confidential if they request so of IFAD</label>
-                  <select id="confidentiality-option-a" class="form-control" style="background-color: ghostwhite;" required>
+                  <select id="confidentiality-request" class="form-control" style="background-color: ghostwhite;" required>
                     <option value="" disabled selected>choose your option</option>
                     <option>YES</option>
                     <option>NO</option>
@@ -79,7 +79,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>b) Do you want your identity to be kept confidential?</label>
-                  <select id="confidentiality-option-b" class="form-control" style="background-color: ghostwhite;" required>
+                  <select id="confidentiality-identity" class="form-control" style="background-color: ghostwhite;" required>
                     <option value="" disabled selected>choose your option</option>
                     <option>YES</option>
                     <option>NO</option>
@@ -88,8 +88,8 @@
               </div>
             </div>
             <div>
-              <label id="confidentiality-option-c-label">c) If YES, please state why. If NO, please avail your details below</label>
-              <input id="confidentiality-option-c" type="text" class="form-control" style="background-color: ghostwhite;" required placeholder="Enter text">
+              <label>c) If YES, please state why. If NO, please avail your details below</label>
+              <input id="confidentiality-option" type="text" class="form-control" style="background-color: ghostwhite;" required placeholder="Enter text">
             </div>
           </div>
         </div>
@@ -106,40 +106,39 @@
                 <!-- Complainant 1 information -->
                 <div class="row">
                   <div class="col-md-6">
-                    <label id="complainant-1-fullname-label">Full Name</label>
+                    <label>Full Name</label>
                     <input id="complainant-1-fullname" type="text" class="form-control" placeholder="Enter Name" style="background-color: ghostwhite;" required>
+                 
                   </div>
                   <div class="col-md-6">
-                    <label id="complainant-1-title-label">Title</label>
+                    <label>Title</label>
                     <input id="complainant-1-title" type="text" class="form-control" placeholder="Enter Title" style="background-color: ghostwhite;" required>
                   </div>
                 </div>
                 
                 <div class="row">
                   <div class="col-md-6">
-                    <label id="complainant-1-organization-label">Organisation</label>
-                    <input id="complainant-1-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>
-                  </div>
+                    <label>Organisation</label>
+                    <input id="complainant-1-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>               
+                 </div> 
                   <div class="col-md-6">
-                    <label id="complainant-1-phone-label">Phone Number</label>
+                    <label>Phone Number</label>
                     <input id="complainant-1-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num1" style="background-color: ghostwhite;" required>
-                  </div>
                 </div>
-                
-                
-                <label id="complainant-1-email-label">Email</label>
+              </div>               
+                <label>Email</label>
                 <input id="complainant-1-email" type="email" class="form-control" placeholder="Enter Email" style="background-color: ghostwhite;" required>
               </div>
               <div class="col-md-6">
                 <h5 id="location-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">Location</h5>
                 
-                <label id="complainant-1-address-label">Your address/location</label>
+                <label>Your address/location</label>
                 <input id="complainant-1-address" type="text" class="form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" required>
                 
-                <label id="complainant-1-mailing-address-label">Mailing Address (if different)</label>
+                <label>Mailing Address (if different)</label>
                 <input id="complainant-1-mailing-address" type="text" class="form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" required>
                 
-                <label id="complainant-1-additional-guidance-label">Additional guidance on how to locate you (if applicable)</label>
+                <label>Additional guidance on how to locate you (if applicable)</label>
                 <input id="complainant-1-additional-guidance" type="text" class="form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" required>
               </div>
             </div>
@@ -157,39 +156,39 @@
                 <!-- Complainant 2 information -->
                 <div class="row">
                   <div class="col-md-6">
-                    <label id="complainant-2-fullname-label">Full Name</label>
+                    <label>Full Name</label>
                     <input id="complainant-2-fullname" type="text" class="form-control" placeholder="Enter Name" style="background-color: ghostwhite;" required>
                   </div>
                   <div class="col-md-6">
-                    <label id="complainant-2-title-label">Title</label>
+                    <label>Title</label>
                     <input id="complainant-2-title" type="text" class="form-control" placeholder="Enter Title" style="background-color: ghostwhite;" required>
                   </div>
                 </div>
                 
                 <div class="row">
                   <div class="col-md-6">
-                    <label id="complainant-2-organization-label">Organisation</label>
+                    <label>Organisation</label>
                     <input id="complainant-2-organization" type="text" class="form-control" placeholder="Enter Organisation" style="background-color: ghostwhite;" required>
                   </div>
                   <div class="col-md-6">
-                    <label id="complainant-2-phone-label">Phone Number</label>
+                    <label>Phone Number</label>
                     <input id="complainant-2-phone" type="tel" class="form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num2" style="background-color: ghostwhite;" required>
                   </div>
                 </div>
                 
-                <label id="complainant-2-email-label">Email </label>
+                <label>Email </label>
                 <input id="complainant-2-email" type="email" class="form-control" placeholder="Enter Email" style="background-color: ghostwhite;" required>
               </div>
               <div class="col-md-6">
                 <h5 id="location-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">LOCATION</h5>
                 
-                <label id="complainant-2-address-label">Your address/location</label>
+                <label>Your address/location</label>
                 <input id="complainant-2-address" type="text" class="form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" required>
                 
-                <label id="complainant-2-mailing-address-label">Mailing Address (if different) </label>
+                <label>Mailing Address (if different) </label>
                 <input id="complainant-2-mailing-address" type="text" class="form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" required>
                 
-                <label id="complainant-2-additional-guidance-label">Additional guidance on how to locate you (if applicable)</label>
+                <label>Additional guidance on how to locate you (if applicable)</label>
                 <input id="complainant-2-additional-guidance" type="text" class="form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" required>
               </div>
             </div>
@@ -238,14 +237,16 @@
         <div class="card">
           <div class="card-body">
             <h5 id="ifad-project-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">V. IFAD Project / programme of concern and nature of concern</h5>
-            <label id="ifad-project-concern-label">a) Which IFAD-supported project/programme are you concerned about? (please provide the Project/Programme name, if known):</label>
+            
+            <label>a) Which IFAD-supported project/programme are you concerned about? (please provide the Project/Programme name, if known):</label>
             <input id="ifad-project-concern" type="text" class="form-control" style="background-color: ghostwhite;" required>
             
-            <label id="ifad-project-description-label">b) Please provide a short description of your concerns about the project/programme. Please describe, as well, the types of Environmental and Social impacts that may occur, or have occurred, as a result.</label>
+            <label>b) Please provide a short description of your concerns about the project/programme. Please describe, as well, the types of Environmental and Social impacts that may occur, or have occurred, as a result.</label>
             <textarea id="ifad-project-description" class="form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" required></textarea>
             
-            <label id="ifad-project-situation-label">c) When did the situation that raised your concerns start developing? (Please note that complaints must concern projects/programmes currently under design/implementation. Complaints concerning projects/programmes that preceded the operationalization of SECAP in 1/1/2015, projects that have been closed for a period of 24 months or more will not be eligible).</label>
+            <label>c) When did the situation that raised your concerns start developing? (Please note that complaints must concern projects/programmes currently under design/implementation. Complaints concerning projects/programmes that preceded the operationalization of SECAP in 1/1/2015, projects that have been closed for a period of 24 months or more will not be eligible).</label>
             <textarea id="ifad-project-situation" class="form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" required></textarea>
+         
           </div>
         </div>
       </div>
@@ -259,7 +260,7 @@
             <!-- Input fields for project level concerns -->
             
             <div>
-              <label id="raised-complaint-label">a) Have you raised your complaint with government representatives or NGO(s) responsible for planning or executing the project or programme or the Lead Agency or any other agency acting on behalf of IFAD?</label>
+              <label>a) Have you raised your complaint with government representatives or NGO(s) responsible for planning or executing the project or programme or the Lead Agency or any other agency acting on behalf of IFAD?</label>
               <select id="raised-complaint" class="form-control" style="background-color: ghostwhite;" required>
                 <option value="" disabled selected>choose your option</option>
                 <option>YES</option>
@@ -308,11 +309,11 @@
             </div> 
             
             <div>
-              <label for="complaint-unsatisfactory-response">b) Please explain why, if the response or actions taken are not satisfactory.</label>
-              <input type="text" id="complaint-unsatisfactory-response" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
+              <label>b) Please explain why, if the response or actions taken are not satisfactory.</label>
+              <input type="text" id="satisfactory-response" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
             </div>
             <div>
-              <label for="complaint-resolution">c) How do you wish to see the complaint resolved? Do you have any other matters, evidence, or facts (including supporting documents) that you would like to share?</label>
+              <label>c) How do you wish to see the complaint resolved? Do you have any other matters, evidence, or facts (including supporting documents) that you would like to share?</label>
               <input type="text" id="complaint-resolution" class="form-control" placeholder="Enter Text" style="background-color: ghostwhite;" required>
             </div>
             <br>          
@@ -329,7 +330,7 @@
             <!-- Input fields for IFAD level concerns -->
             
             <div class="form-group">
-              <label for="ifad-disagreement">a) Do you disagree with the response from the IFAD Country team and Regional Division in relation to your complaint?</label>
+              <label>a) Do you disagree with the response from the IFAD Country team and Regional Division in relation to your complaint?</label>
               <select id="ifad-disagreement" class="form-control" style="background-color: ghostwhite;" required>
                 <option value="" disabled selected>Choose your option</option>
                 <option>YES</option>
@@ -337,16 +338,16 @@
               </select>
             </div>
             
-            <label for="ifad-response-details">b) Please provide the details of the response from the IFAD Country Team and Regional Division in relation to your complaint</label>
+            <label>b) Please provide the details of the response from the IFAD Country Team and Regional Division in relation to your complaint</label>
             <textarea id="ifad-response-details" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
             
-            <label for="ifad-unsatisfactory-explanation">c) Please explain why, if the response or actions taken are not satisfactory</label>
+            <label>c) Please explain why, if the response or actions taken are not satisfactory</label>
             <textarea id="ifad-unsatisfactory-explanation" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
             
-            <label for="ifad-desired-resolution">d) How do you wish to see the complaint resolved?</label>
+            <label>d) How do you wish to see the complaint resolved?</label>
             <textarea id="ifad-desired-resolution" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
             
-            <label for="ifad-other-matters">e) Do you have any other matters or facts (including supporting documents) that you would like to share?</label>
+            <label>e) Do you have any other matters or facts (including supporting documents) that you would like to share?</label>
             <textarea id="ifad-other-matters" class="form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" required></textarea>
           </div>
         </div>
@@ -409,6 +410,7 @@
   $onload(function(){
     if(URL_ARGS['qs']!="internal"){
       var sidebar = $ID("sidebar")
+      var content = $ID("content_griev")
       sidebar.parentNode.querySelectorAll("#sidebar")[0].remove()
     }
   })
