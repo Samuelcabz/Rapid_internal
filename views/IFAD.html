@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+{% include 'base.html' %}
+
+<body>
 
   <title>IFAD Form</title>
 
 <div class="wrapper">
-
-  {% block content %}
+<div id="content">
 
   <div class="card-body">
   <h5 class="text-center" style="background-color: #264653; color:#ffffff; padding: 10px;">IFAD Complaints procedure & the enhanced complaints procedure submission form </h5>
@@ -197,74 +198,41 @@
     </div>
     <br>
   
-    <div class="container-fluid">
-      <div class="card">
-        <div class="col-md-12">
-          <div class="card-body">
-            <div class="container">
-              <p id="supporting-complaint-label" class="text-center" style="background-color: #264653; color:#ffffff;  padding: 10px;">Please provide the names and/or description of other individuals or groups that support the complaint (If any):</p>
-              <div class="table-responsive">
-                <table id="supporting-complaint-table" class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Title/Affiliation</th>
-                      <th>Contact Information</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-1" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-1" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-1" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-1" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-2" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-2" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-2" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-2" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-3" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-3" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-3" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-3" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-4" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-4" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-4" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-4" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-5" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-5" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-5" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-5" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-6" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-6" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-6" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-6" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <tr>
-                      <td><input type="name" id="supporting-complaint-first-name-7" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-last-name-7" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-title-affiliation-7" style="background-color: ghostwhite;" required></td>
-                      <td><input type="name" id="supporting-complaint-contact-info-7" style="background-color: ghostwhite;" required></td>
-                    </tr>
-                    <!-- More rows as needed -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body"> 
+           <div class="button-container d-flex justify-content-between">
+            <div class="text-left">
+    <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
+    </div>
+    <div class="text-right">
+      <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Delete Row</button>
       </div>
     </div>
+
+      <div class="table-responsive">
+<table id="myTable">
+    <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Title/Affiliation</th>
+          <th>Contact Information</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text"required></td>
+            <td><input type="text"required></td>
+            <td><input type="text"required></td>
+            <td><input type="text"required></td>
+        </tr>       
+    </tbody>
+</table>
+    </div>
+    </div>
+  </div> 
 
     <div class="container-fluid">
       <div class="card">
@@ -302,56 +270,42 @@
           <br>
 
            <label style="font-weight: bold;">If Yes,</label>
-
-<div class="table-responsive" id="complaint-table">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
+           <div class="button-container d-flex justify-content-between">
+            <div class="text-left">
+    <button class="btn" id="addRowBtn2" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
+    </div>
+    <div class="text-right">
+      <button class="btn" id="addRowBtn2" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Add Row</button>
+      </div>
+    </div>
+           <div class="card">
+            <div class="card-body"> 
+              <div class="table-responsive">
+        <table id="myTable2">
+            <thead>
+                <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Title/Affiliation</th>
                 <th>Estimated Date of Contact</th>
                 <th>Nature of Communication</th>
                 <th>Response from the Individual</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="name" id="complaint-first-name-1" style="background-color: ghostwhite;" required></td>
-                <td><input type="name" id="complaint-last-name-1" style="background-color: ghostwhite;" required></td>
-                <td><input type="name" id="complaint-title-affiliation-1" style="background-color: ghostwhite;" required></td>
-                <td><input type="date" id="complaint-date-1" style="background-color: ghostwhite;" required></td>
-                <td><input type="name" id="complaint-nature-1" style="background-color: ghostwhite;" required></td>
-                <td><input type="name" id="complaint-response-1" style="background-color: ghostwhite;" required></td>
-            </tr>
-            <tr>
-              <td><input type="name" id="complaint-first-name-2" style="background-color: ghostwhite;" required></td>
-              <td><input type="name" id="complaint-last-name-2" style="background-color: ghostwhite;" required></td>
-              <td><input type="name" id="complaint-title-affiliation-2" style="background-color: ghostwhite;" required></td>
-              <td><input type="date" id="complaint-date-2" style="background-color: ghostwhite;" required></td>
-              <td><input type="name" id="complaint-nature-2" style="background-color: ghostwhite;" required></td>
-              <td><input type="name" id="complaint-response-2" style="background-color: ghostwhite;" required></td>
-          </tr>
-          <tr>
-            <td><input type="name" id="complaint-first-name-3" style="background-color: ghostwhite;" required></td>
-            <td><input type="name" id="complaint-last-name-3" style="background-color: ghostwhite;" required></td>
-            <td><input type="name" id="complaint-title-affiliation-3" style="background-color: ghostwhite;" required></td>
-            <td><input type="date" id="complaint-date-3" style="background-color: ghostwhite;" required></td>
-            <td><input type="name" id="complaint-nature-3" style="background-color: ghostwhite;" required></td>
-            <td><input type="name" id="complaint-response-3" style="background-color: ghostwhite;" required></td>
-        </tr>
-        <tr>
-          <td><input type="name" id="complaint-first-name-4" style="background-color: ghostwhite;" required></td>
-          <td><input type="name" id="complaint-last-name-4" style="background-color: ghostwhite;" required></td>
-          <td><input type="name" id="complaint-title-affiliation-4" style="background-color: ghostwhite;" required></td>
-          <td><input type="date" id="complaint-date-4" style="background-color: ghostwhite;" required></td>
-          <td><input type="name" id="complaint-nature-4" style="background-color: ghostwhite;" required></td>
-          <td><input type="name" id="complaint-response-4" style="background-color: ghostwhite;" required></td>
-      </tr>
-                          <!-- More rows can be added here if needed -->
-      </tbody>
-    </table>
-</div>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"required></td>
+                    <td><input type="text"required></td>
+                    <td><input type="text"required></td>
+                    <td><input type="date"required></td>
+                    <td><input type="text"required></td>
+                    <td><input type="text"required></td>
+                </tr>       
+            </tbody>
+        </table>
+            </div>
+            </div>
+          </div> 
           
               <div>
                 <label for="complaint-unsatisfactory-response">b) Please explain why, if the response or actions taken are not satisfactory.</label>
@@ -408,5 +362,50 @@
 </div>
   
 <script src="../static/js/sidebarscript.js"></script>
+<script>
+  document.getElementById("addRowBtn").addEventListener("click", function() {
+      var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+      var newRow = table.insertRow(table.rows.length);
+      
+      for (var i = 0; i < 4; i++) {
+          var cell = newRow.insertCell(i);
+          var input = document.createElement("input");
+          input.type = "text";      
+          cell.appendChild(input);
+        }
+
+        
+      {
+        
+        var actionCell = newRow.insertCell(4);
+        var deleteButton = document.createElement("button");
+        deleteButton.className = "deleteBtn";
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function() {
+            deleteRow(this);
+        };
+        actionCell.appendChild(deleteButton);
+    }
+
+    function deleteRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+      
+  });
+
+  document.getElementById("addRowBtn2").addEventListener("click", function() {
+        var table = document.getElementById("myTable2").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        
+        for (var i = 0; i < 6; i++) {
+            var cell = newRow.insertCell(i);
+            var input = document.createElement("input");
+            input.type = i === 3 ? "date" : "text";
+            cell.appendChild(input);
+        }
+    });
+
+</script>
   
-  {% endblock %}
+  </body>
