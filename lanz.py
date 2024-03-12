@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, Blueprint
+from flask import Flask, render_template, Blueprint
 from modules.Connections import mysql
 
-dbs = mysql('localhost','root','','tracking_progress')
-
+dbs = mysql('localhost','root','','dashboard_table')
+app = Flask(__name__,template_folder="views")
 app = Blueprint("lanz",__name__)
 
 
@@ -13,22 +13,15 @@ def index():
 
 @app.route("/Home") 
 def homepage():
-    varia = dbs.select("SELE")
     return render_template("Home.html")
 
 
-@app.route("/Tracking_Form", methods=['GET', 'POST'])
+@app.route("/Tracking_Form")
 def trackingForm():
-    if request.method == 'POST':
-        logFrame = request.form['logFrame'].upper()
-        sql = f"INSERT INTO `tracking_progress` (`logFrame`) VALUES ('{logFrame}')"
-        res =dbs.do(sql)
-        print(res)
     return render_template("form.html")
 
 
 @app.route("/Tracking_Table")
 def table_trackingForm():
-    return render_template("tableTracking.html")
-
-
+    rows = dbs.select("SELECT `act_title`, `Date`, `logFrame`, `AWPB`, `reflect_i` FROM tracking_progress")
+    return render_template("tableTracking.html", rows=rows)
