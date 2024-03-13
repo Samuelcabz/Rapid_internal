@@ -27,5 +27,4 @@ def insert(TABLE):
     res = dbs.do(f"INSERT {TABLE} ({coloumn[1:]}) VALUES ({values[1:]})")
     return jsonify(res)
 
-
 app.run(debug=True)

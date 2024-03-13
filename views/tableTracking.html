@@ -13,6 +13,7 @@
                     <table id="dataTable" class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Activity Title</th>
                                 <th>Actual Date</th>
                                 <th>Project Logframe Alignment</th>
@@ -25,6 +26,7 @@
                         <tbody>
                             {% for row in rows %}
                             <tr>
+                                <td>{{ row['Id']}}</td>
                                 <td>{{ row['act_title'] }}</td>
                                 <td>{{ row['Date'] }}</td>
                                 <td>{{ row['logFrame'] }}</td>
@@ -33,7 +35,7 @@
                                 <td>
                                     <div style="display: flex; gap: 5px;">
                                         <button class="btn btn-primary btn-sm">Edit</button>
-                                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteData()">Delete</button>
+                                        <button type="button" class="btn btn-danger delete-btn" data-row-id="{{ row['Id'] }}">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -46,6 +48,49 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            let rowId = this.dataset.rowId;
+            deleteRow(rowId);
+        });
+    });
+
+    function deleteRow(id) {
+        fetch(`/delete/Tracking_Table/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (response.ok) {
+                showToast("Row deleted successfully.", () => {
+                    location.reload();
+                });
+            } else {
+                console.error('Failed to delete row.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function showToast(message, callback) {
+        Toastify({
+            text: message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "#4ad66d",
+                borderRadius: "5px"
+            },
+            stopOnFocus: true,
+            className: "Toastify__toast--bounceIn"
+        }).showToast();
+
+        setTimeout(callback, 2000); 
+    }
+</script>
 
 
 
