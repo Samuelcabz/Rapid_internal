@@ -34,8 +34,9 @@
                                 <td>{{ row['reflect_i'] }}</td>
                                 <td>
                                     <div style="display: flex; gap: 5px;">
-                                        <button class="btn btn-primary btn-sm">Edit</button>
-                                        <button type="button" class="btn btn-danger delete-btn" data-row-id="{{ row['Id'] }}">Delete</button>
+                                        <a href="/Tracking_Form" class="btn-link btn-sm view-btn" style="cursor:pointer;">View</a>
+                                        <a href="/Tracking_Form" class="btn-link btn-sm edit-btn" style="color: rgb(57, 189, 57); cursor:pointer;">Edit</a>
+                                        <a class="btn-link btn-sm delete-btn" data-row-id="{{ row['Id'] }}" style="color: red; cursor: pointer;">Delete</a>
                                     </div>
                                 </td>
                             </tr>
@@ -58,40 +59,45 @@
     });
 
     function deleteRow(id) {
-        fetch(`/delete/Tracking_Table/${id}`, {
-            method: 'DELETE',
-        })
-        .then(response => {
-            if (response.ok) {
-                showToast("Row deleted successfully.", () => {
-                    location.reload();
-                });
-            } else {
-                console.error('Failed to delete row.');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+    fetch(`/delete/Tracking_Table/${id}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (response.ok) {
+            showToast("Row deleted successfully.", "#4ad66d", () => {
+                location.reload();
+            });
+        } else {
+            showToast("Failed to delete row.", "#f13030");
+            console.error('Failed to delete row.');
+        }
+    })
+    .catch(error => {
+        showToast("Error occurred while deleting row.", "#f13030");
+        console.error('Error:', error);
+    });
+}
 
-    function showToast(message, callback) {
-        Toastify({
-            text: message,
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "center",
-            style: {
-                background: "#4ad66d",
-                borderRadius: "5px"
-            },
-            stopOnFocus: true,
-            className: "Toastify__toast--bounceIn"
-        }).showToast();
+function showToast(message, bgColor = "#4ad66d", callback) {
+    Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        style: {
+            background: bgColor,
+            borderRadius: "5px"
+        },
+        stopOnFocus: true,
+        className: "Toastify__toast--bounceIn"
+    }).showToast();
 
-        setTimeout(callback, 2000); 
+    if (callback) {
+        setTimeout(callback, 1500); 
     }
+}
 </script>
-
 
 
 <script>
