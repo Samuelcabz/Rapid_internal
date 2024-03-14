@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, redirect
+from flask import Flask, request, jsonify
 from modules.Connections import mysql
 import franz
 import lanz
@@ -17,7 +17,6 @@ app.register_blueprint(lanz.app)
 app.register_blueprint(andz.app)
 
 
-
 @app.route("/insert/<TABLE>", methods=["POST", "GET"])
 def insert(TABLE):
     coloumn = ""
@@ -26,12 +25,6 @@ def insert(TABLE):
         coloumn += f",`{ids}`"
         values += f",'{request.form[ids]}'"
     res = dbs.do(f"INSERT {TABLE} ({coloumn[1:]}) VALUES ({values[1:]})")
-    return jsonify(res)
-
-
-@app.route("/delete/<int:id>", methods=["POST"])
-def delete_row(id):
-    res = dbs.do(f"DELETE FROM tracking_progress WHERE id = {id}")
     return jsonify(res)
 
 app.run(debug=True)

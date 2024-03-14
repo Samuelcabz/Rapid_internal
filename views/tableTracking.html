@@ -13,6 +13,7 @@
                     <table id="dataTable" class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Activity Title</th>
                                 <th>Actual Date</th>
                                 <th>Project Logframe Alignment</th>
@@ -25,6 +26,7 @@
                         <tbody>
                             {% for row in rows %}
                             <tr>
+                                <td>{{ row['Id']}}</td>
                                 <td>{{ row['act_title'] }}</td>
                                 <td>{{ row['Date'] }}</td>
                                 <td>{{ row['logFrame'] }}</td>
@@ -32,8 +34,9 @@
                                 <td>{{ row['reflect_i'] }}</td>
                                 <td>
                                     <div style="display: flex; gap: 5px;">
-                                        <button class="btn btn-primary btn-sm">Edit</button>
-                                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteData()">Delete</button>
+                                        <a href="/Tracking_Form" class="btn-link btn-sm view-btn" style="cursor:pointer;">View</a>
+                                        <a href="/Tracking_Form" class="btn-link btn-sm edit-btn" style="color: rgb(57, 189, 57); cursor:pointer;">Edit</a>
+                                        <a class="btn-link btn-sm delete-btn" data-row-id="{{ row['Id'] }}" style="color: red; cursor: pointer;">Delete</a>
                                     </div>
                                 </td>
                             </tr>
@@ -47,6 +50,54 @@
     </div>
 </div>
 
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            let rowId = this.dataset.rowId;
+            deleteRow(rowId);
+        });
+    });
+
+    function deleteRow(id) {
+    fetch(`/delete/Tracking_Table/${id}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (response.ok) {
+            showToast("Row deleted successfully.", "#4ad66d", () => {
+                location.reload();
+            });
+        } else {
+            showToast("Failed to delete row.", "#f13030");
+            console.error('Failed to delete row.');
+        }
+    })
+    .catch(error => {
+        showToast("Error occurred while deleting row.", "#f13030");
+        console.error('Error:', error);
+    });
+}
+
+function showToast(message, bgColor = "#4ad66d", callback) {
+    Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        style: {
+            background: bgColor,
+            borderRadius: "5px"
+        },
+        stopOnFocus: true,
+        className: "Toastify__toast--bounceIn"
+    }).showToast();
+
+    if (callback) {
+        setTimeout(callback, 1500); 
+    }
+}
+</script>
 
 
 <script>
