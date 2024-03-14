@@ -11,6 +11,6 @@ def ifadForm():
     return render_template("IFAD.html")
 
 @app.route("/IFAD_Table")
-def table_IFAD():
-    return render_template("IFADtable.html") 
-
+def table_trackingForm():
+    rows = dbs.select("SELECT `type-complaint`, `SECAP`, `complainant-quantity`, `nationality` FROM grievance")
+    return render_template("IFADtable.html", rows=rows)
