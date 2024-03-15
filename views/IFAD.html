@@ -434,33 +434,21 @@
           requiredInputs.forEach(function(input) {
               input.value = '';
           });
-          Toastify({
-            text: "Form submitted successfully!",
-            duration: 3000, 
-            close: true,
-            gravity: "top",
-            position: "center",
-            style: {
-                background: "#4ad66d",
-                borderRadius: "5px"
-            },
-            stopOnFocus: true,
-            className: "Toastify__toast--bounceIn"
-          }).showToast();
+          Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Submitted successfully",
+        showConfirmButton: false,
+        timer: 1500
+    });
       } else {
-        Toastify({
-            text: "Please fill out all required fields!",
-            duration: 3000, 
-            close: true,
-            gravity: "top",
-            position: "center",
-            style: {
-                background: "#f13030",
-                borderRadius: "5px"
-            },
-            stopOnFocus: true,
-            className: "Toastify__toast--bounceIn"
-          }).showToast();
+        Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Please fill the field",
+        showConfirmButton: false,
+        timer: 1500
+      });
       }
   }
   
