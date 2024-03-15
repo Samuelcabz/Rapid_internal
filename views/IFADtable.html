@@ -17,6 +17,7 @@
                                 <table id="dataTable" class="table table-striped">
                                     <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Complainant</th>
                                     <th>Choose SECAP</th>
                                     <th>Number of Complainants</th>
@@ -27,6 +28,7 @@
                                 <tbody>
                                     {% for row in rows %}
                                     <tr>
+                                        <td>{{ row['id']}}</td>
                                         <td>{{ row['type-complaint']}}</td>
                                         <td>{{ row['SECAP'] }}</td>
                                         <td>{{ row['complainant-quantity'] }}</td>
@@ -35,7 +37,7 @@
                                             <div style="display: flex; gap: 5px;">
                                                 <a href="#" class="btn-link btn-sm view-btn" style="cursor:pointer;">View</a>
                                                 <a href="#" class="btn-link btn-sm edit-btn" style="color: rgb(57, 189, 57); cursor:pointer;">Edit</a>
-                                                <a class="btn-link btn-sm delete-btn" data-row-id="{{ row['Id'] }}" style="color: red; cursor: pointer;">Delete</a>
+                                                <a class="btn-link btn-sm delete-btn" data-row-id="{{ row['id'] }}" style="color: red; cursor: pointer;">Delete</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -73,14 +75,15 @@
 
 <script>
     document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(this_) {
+            // this_.getAttr("")
             let rowId = this.dataset.rowId;
             deleteRow(rowId);
         });
     });
 
     function deleteRow(id) {
-    fetch(`/delete/Tracking_Table/${id}`, {
+    fetch(`/delete/IFAD_Table/${id}`, {
         method: 'DELETE',
     })
     .then(response => {

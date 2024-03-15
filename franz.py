@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, request
+from flask import Flask, render_template, Blueprint, request, jsonify
 from modules.Connections import mysql
 
 dbs = mysql('localhost','root','','dashboard_table')
@@ -12,5 +12,10 @@ def ifadForm():
 
 @app.route("/IFAD_Table")
 def table_trackingForm():
-    rows = dbs.select("SELECT `type-complaint`, `SECAP`, `complainant-quantity`, `nationality` FROM grievance")
+    rows = dbs.select("SELECT `id`, `type-complaint`, `SECAP`, `complainant-quantity`, `nationality` FROM grievance")
     return render_template("IFADtable.html", rows=rows)
+
+@app.route("/delete/IFAD_Table/<id>", methods=["DELETE"])
+def delete_ifad_row(id):
+    res = dbs.do(f"DELETE FROM grievance WHERE Id = {id}")
+    return jsonify(res)
