@@ -7,6 +7,23 @@ body {
     background: #eaeaea;
     min-height: 100vh;
 }
+.dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+
+  .dark-mode #sidebar{
+    background-color: #8b8b8b;
+    color: white;
+  }
+
+
+
+  .dark-mode .card-body{
+    background-color: #8b8b8b;
+    color: white;
+  }
+
 
 p {
     font-family: 'Poppins', sans-serif;
@@ -149,7 +166,7 @@ a.article:hover {
 }
 
 #sidebar.active + #content {
-    margin-left: 180px;
+    margin-left: 200px;
 }
 
 /* Media query for smaller screens */
@@ -211,6 +228,7 @@ label {
 .container-fluid {
     padding-right: 0;
     padding-left: 0;
+    
 }
 
 .card {
@@ -405,3 +423,9 @@ table {
     height: 100%;
     object-fit: cover;
 }
+
+.grey-bg {
+    background-color: #d8f3dc;
+}
+
+

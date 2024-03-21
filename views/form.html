@@ -5,8 +5,7 @@
       
       {% block content %}
             <div class="container-fluid">
-      <div>
-          <div class="card-body">
+          <div>
             <div class="text-center mb-4">
               <h4 style="background-color: #264653; color: #fff; padding: 10px;">TRACKING PROGRESS</h4>
             </div>            
@@ -18,7 +17,7 @@
                     <hr>
                     <div class="form-group">
                       <label for="logFrame">(Reflect Indicator Number)</label>
-                      <input type="text" class="TRACKING_FORM form-control" id="logFrame" placeholder="Enter text" style="background-color:ghostwhite;" required >
+                      <input type="text" class="TRACKING_FORM form-control" id="logFrame" placeholder="Enter text" style="background-color:ghostwhite;" value="{{ data['logFrame'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                     </div>
                   </div>
                 </div>
@@ -32,27 +31,27 @@
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="AWPB">Indicate Number of AWPB Activity</label>
-                              <select class="TRACKING_FORM form-control" id="AWPB" style="background-color:ghostwhite;" required >
-                                  <option value="" disabled selected>Choose your option</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                              </select>
+                              <select class="TRACKING_FORM form-control" id="AWPB" style="background-color:ghostwhite;" {% if readonly %}disabled{% endif %} required>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1" {% if data and data['AWPB'] == 1 %}selected{% endif %}>1</option>
+                                <option value="2" {% if data and data['AWPB'] == 2 %}selected{% endif %}>2</option>
+                                <option value="3" {% if data and data['AWPB'] == 3 %}selected{% endif %}>3</option>
+                                <option value="4" {% if data and data['AWPB'] == 4 %}selected{% endif %}>4</option>
+                                <option value="5" {% if data and data['AWPB'] == 5 %}selected{% endif %}>5</option>
+                            </select>                            
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
                               <label for="reflect_i">Reflect Corresponding Indicator Number</label>
-                              <select class="TRACKING_FORM form-control" id="reflect_i" style="background-color:ghostwhite;" required >
-                                  <option value="" disabled selected>Choose your option</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                              </select>
+                              <select class="TRACKING_FORM form-control" id="reflect_i" style="background-color:ghostwhite;" {% if readonly %}disabled{% endif %} required>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1" {% if data and data['reflect_i'] == 1 %}selected{% endif %}>1</option>
+                                <option value="2" {% if data and data['reflect_i'] == 2 %}selected{% endif %}>2</option>
+                                <option value="3" {% if data and data['reflect_i'] == 3 %}selected{% endif %}>3</option>
+                                <option value="4" {% if data and data['reflect_i'] == 4 %}selected{% endif %}>4</option>
+                                <option value="5" {% if data and data['reflect_i'] == 5 %}selected{% endif %}>5</option>
+                            </select>                            
                           </div>
                       </div>
                   </div>                                    
@@ -69,7 +68,7 @@
                   <div class="form-group">
                     <div class="col-md">
                         <label for="act_title">Activity Title</label>
-                        <input type="text" class="TRACKING_FORM form-control" id="act_title" placeholder="Enter title" style="background-color: ghostwhite;" required >
+                        <input type="text" class="TRACKING_FORM form-control" id="act_title" placeholder="Enter title" style="background-color: ghostwhite;" value="{{ data['act_title'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                     </div>
                 </div>
                 <hr>
@@ -78,32 +77,32 @@
                         <h5 class="card-title text-center mb-2" style="margin-top: 20px;">Participants (if applicable)</h5> 
                         <div class="form-group">
                             <label for="POA">Profile of Attendees (e.g., RCUs, RPCs, MSMEs, FOs, etc.)</label>
-                            <input type="text" class="TRACKING_FORM form-control" id="POA" placeholder="Enter Profile" style="background-color: ghostwhite;" required >
+                            <input type="text" class="TRACKING_FORM form-control" id="POA" placeholder="Enter Profile" style="background-color: ghostwhite;" value="{{ data['POA'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                         </div>
                         <div class="form-row">
                             <div class="col-md">
                                 <label for="Males">Male</label>
-                                <input type="number" class="TRACKING_FORM form-control" id="Males" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required >
+                                <input type="number" class="TRACKING_FORM form-control" id="Males" min="0" placeholder="Enter number" style="background-color: ghostwhite;" value="{{ data['Males'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                             </div>
                             <div class="col-md">
                                 <label for="Females">Female</label>
-                                <input type="number" class="TRACKING_FORM form-control" id="Females" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required >
+                                <input type="number" class="TRACKING_FORM form-control" id="Females" min="0" placeholder="Enter number" style="background-color: ghostwhite;" value="{{ data['Females'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md">
                                 <label for="IP">IP</label>
-                                <input type="number" class="TRACKING_FORM form-control" id="IP" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required >
+                                <input type="number" class="TRACKING_FORM form-control" id="IP" min="0" placeholder="Enter number" style="background-color: ghostwhite;" value="{{ data['IP'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                             </div>
                             <div class="col-md">
                                 <label for="Youth">Youth</label>
-                                <input type="number" class="TRACKING_FORM form-control" id="Youth" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required >
+                                <input type="number" class="TRACKING_FORM form-control" id="Youth" min="0" placeholder="Enter number" style="background-color: ghostwhite;" value="{{ data['Youth'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md">
                                 <label for="PWD">PWD</label>
-                                <input type="number" class="TRACKING_FORM form-control" id="PWD" min="0" placeholder="Enter number" style="background-color: ghostwhite;" required >
+                                <input type="number" class="TRACKING_FORM form-control" id="PWD" min="0" placeholder="Enter number" style="background-color: ghostwhite;" value="{{ data['PWD'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                             </div>
                         </div>
                     </div>
@@ -112,27 +111,27 @@
                       <div class="form-row" style="margin-top: 50px;">
                         <div class="col-md">
                             <label for="Date">Actual Date</label>
-                            <input type="date" class="TRACKING_FORM form-control" id="Date" min="0" placeholder="Choose Date" style="background-color: ghostwhite;" required >
+                            <input type="date" class="TRACKING_FORM form-control" id="Date" min="0" placeholder="Choose Date" style="background-color: ghostwhite;" value="{{ data['Date'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                         </div>
                         <div class="col-md">
                             <label for="Venue">Venue</label>
-                            <input type="text" class="TRACKING_FORM form-control" id="Venue" min="0" placeholder="Enter Venue" style="background-color: ghostwhite;" required >
+                            <input type="text" class="TRACKING_FORM form-control" id="Venue" min="0" placeholder="Enter Venue" style="background-color: ghostwhite;" value="{{ data['Venue'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                         </div>
                     </div>
                     <div class="form-row" style="margin-top: 20px;">
                       <div class="col-md">
                           <label for="Resource">Resource Person</label>
-                          <input type="text" class="TRACKING_FORM form-control" id="Resource" min="0" placeholder="Enter resource person" style="background-color: ghostwhite;" required >
+                          <input type="text" class="TRACKING_FORM form-control" id="Resource" min="0" placeholder="Enter resource person" style="background-color: ghostwhite;" value="{{ data['Resource'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                       </div>
                       <div class="col-md">
                           <label for="NPCO">NPCO Lead Person/Unit</label>
-                          <input type="text" class="TRACKING_FORM form-control" id="NPCO" min="0" placeholder="Enter lead Person" style="background-color: ghostwhite;" required >
+                          <input type="text" class="TRACKING_FORM form-control" id="NPCO" min="0" placeholder="Enter lead Person" style="background-color: ghostwhite;" value="{{ data['NPCO'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                       </div>
                   </div>                    
                         <div class="form-group row">
                             <div class="col-md">
                                 <label for="UB">Utilized Budget (estimated)</label>
-                                <input type="number" class="TRACKING_FORM form-control" id="UB" min="0" placeholder="Enter estimated budget" style="background-color: ghostwhite;" required >
+                                <input type="number" class="TRACKING_FORM form-control" id="UB" min="0" placeholder="Enter estimated budget" style="background-color: ghostwhite;" value="{{ data['UB'] if data else '' }}" {% if readonly %}readonly{% endif %} required >
                             </div>
                         </div>
                     </div>
@@ -141,19 +140,19 @@
 
                 <div class="form-group mt-3">
                   <label for="act_outputs">Activity Outputs/Highlights (vs. planned outputs/objectives, include issues/concerns requiring NPCO action)</label>
-                  <input type="text" class="TRACKING_FORM form-control" id="act_outputs" placeholder="Enter Activity" style="background-color:ghostwhite;" required ></input>
+                  <input type="text" class="TRACKING_FORM form-control" id="act_outputs" placeholder="Enter Activity" style="background-color:ghostwhite;" value="{{ data['act_outputs'] if data else '' }}" {% if readonly %}readonly{% endif %} required ></input>
                 </div>
                 <div class="row mt-3">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="other">Other Remarks</label>
-                      <input class="TRACKING_FORM form-control" id="other" placeholder="Enter Remarks" style="background-color:ghostwhite;" required ></input>
+                      <input class="TRACKING_FORM form-control" id="other" placeholder="Enter Remarks" style="background-color:ghostwhite;" value="{{ data['other'] if data else '' }}" {% if readonly %}readonly{% endif %} required ></input>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="MOV">Submitted MOVs</label>
-                      <input class="TRACKING_FORM form-control" id="MOV" placeholder="Enter MOV" style="background-color:ghostwhite;" required ></input>
+                      <input class="TRACKING_FORM form-control" id="MOV" placeholder="Enter MOV" style="background-color:ghostwhite;" value="{{ data['MOV'] if data else '' }}" {% if readonly %}readonly{% endif %} required ></input>
                     </div>
                   </div>
                 </div>
@@ -161,8 +160,12 @@
             </div>
           </div>
           <div class="text-right">
-            <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndSubmit()">Submit</button>
-          </div>
+            {% if edit_mode %}
+                <button type="submit" class="btn btn-primary" id="update" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndUpdate()">Update</button>
+            {% else %}
+                <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndSubmit()">Submit</button>
+            {% endif %}
+        </div>        
         </div>
        </div>
       </div>
@@ -172,57 +175,78 @@
   </div>
  </div>
 </div>
+<div id="readonly" style="display: none;">{% if readonly %}true{% else %}false{% endif %}</div>
 
 <script src="../static/js/sidebarscript.js"></script>
 
 <script>
-function validateAndSubmit() {
-    var requiredInputs = document.querySelectorAll('input[required], select[required]');
-    var isValid = true; 
-    requiredInputs.forEach(function(input) {
-        if (!input.value.trim()) {
-            isValid = false;
-            input.style.setProperty('border', '1px solid red');
-        } else {
-            input.style.setProperty('border', ''); 
-        }
-    });
-    if (isValid) {
-        submit_tracking();
-        requiredInputs.forEach(function(input) {
-            input.value = '';
-        });
-        Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Submitted successfully",
-        showConfirmButton: false,
-        timer: 1500
-    });
-    } else {
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Please fill the field",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }
-}
-
-
-function submit_tracking(){
-            var tracking_form_fields = input_to_json('TRACKING_FORM')
-            println(tracking_form_fields)
-            $send({
-                action : "/insert/tracking_progress",
-                data : $DATA(tracking_form_fields),
-                method : POST,
-                func : after_submit
-            })
-        }
-        function after_submit(res){
-        }
-</script>
+  function validateAndSubmit() {
+      var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+      if (readonly) {
+          Swal.fire({
+              title: "View Mode",
+              text: "You are currently in view mode. Editing is not allowed.",
+              icon: "info",
+              confirmButtonText: "OK"
+          });
+      } else {
+          var requiredInputs = document.querySelectorAll('input[required], select[required]');
+          var isValid = true; 
+          requiredInputs.forEach(function(input) {
+              if (!input.value.trim()) {
+                  isValid = false;
+                  input.style.setProperty('border', '1px solid red');
+              } else {
+                  input.style.setProperty('border', ''); 
+              }
+          });
+          if (isValid) {
+              submit_tracking();
+              requiredInputs.forEach(function(input) {
+                  input.value = '';
+              });
+              Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Submitted successfully",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          } else {
+              Swal.fire({
+                  position: "center",
+                  icon: "error",
+                  title: "Please fill the field",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          }
+      }
+  }
+  
+  function submit_tracking() {
+    var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+      if (readonly) {
+          Swal.fire({
+              title: "View Mode",
+              text: "You are currently in view mode. Editing is not allowed.",
+              icon: "info",
+              confirmButtonText: "OK"
+          });
+      } else {
+          var tracking_form_fields = input_to_json('TRACKING_FORM');
+          console.log(tracking_form_fields);
+          $send({
+              action : "/insert/tracking_progress",
+              data : $DATA(tracking_form_fields),
+              method : 'POST',
+              func : after_submit
+          });
+      }
+  }
+  
+  function after_submit(res) {
+  }
+  </script>
   
 {% endblock %}

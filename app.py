@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from modules.Connections import mysql
 import franz
 import lanz
@@ -26,5 +26,22 @@ def insert(TABLE):
         values += f",'{request.form[ids]}'"
     res = dbs.do(f"INSERT {TABLE} ({coloumn[1:]}) VALUES ({values[1:]})")
     return jsonify(res)
+
+@app.route("/view_entry/<int:id>")
+def view_entry(id):
+    row = dbs.select(f"SELECT * FROM tracking_progress WHERE Id = {id}")
+    if row:
+        return render_template("form.html", data=row[0], readonly=True)
+    else:
+        return "Entry not found", 404
+    
+@app.route("/edit_entry/<int:id>", methods=["GET", "POST"])
+def edit_entry(id):
+    row = dbs.select(f"SELECT * FROM tracking_progress WHERE Id = {id}")
+    if row:
+        return render_template("form.html", data=row[0], readonly=False, edit_mode=True)
+    else:
+        return "Entry not found", 404
+
 
 app.run(debug=True)
