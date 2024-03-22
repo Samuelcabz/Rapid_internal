@@ -17,7 +17,8 @@
                                 <th>Actual Date</th>
                                 <th>Project Logframe Alignment</th>
                                 <th>Number of AWPB Activity</th>
-                                <th>Reflect Corresponding Indicator Number</th>
+                                <th>Reflect Corresponding <br> Indicator Number</th>
+                                <th>Timestamp</th>
                                 <th>Action</th>
                             </tr>
                             </tr>
@@ -31,6 +32,12 @@
                                 <td>{{ row['logFrame'] }}</td>
                                 <td>{{ row['AWPB'] }}</td>
                                 <td>{{ row['reflect_i'] }}</td>
+                                <td> {{ row['date_created'] }}<br>
+                                    {% if row['date_modified'] %}
+                                    <i style="font-size: smaller;color: #00cc66;">Updated: {{ row['date_modified'] | format_timestamp
+                                    }}</i>
+                                    {% endif %}</i>
+                                </td>
                                 <td>
                                     <div style="display: flex; gap: 5px;">
                                         <a href="/view_entry/{{ row['Id'] }}" class="btn-link btn-sm view-btn" style="cursor:pointer;">View</a>

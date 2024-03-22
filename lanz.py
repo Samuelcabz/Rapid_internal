@@ -23,7 +23,7 @@ def trackingForm():
 
 @app.route("/Tracking_Table")
 def table_trackingForm():
-    rows = dbs.select("SELECT `Id`, `act_title`, `Date`, `logFrame`, `AWPB`, `reflect_i` FROM tracking_progress")
+    rows = dbs.select("SELECT `Id`, `act_title`, `Date`, `logFrame`, `AWPB`, `reflect_i`, `date_created`, `date_modified` FROM tracking_progress")
     return render_template("tableTracking.html", rows=rows)
 
 @app.route("/delete/Tracking_Table/<int:id>", methods=["DELETE"])
@@ -55,7 +55,7 @@ def update_entry(id):
 def edit_entry(id):
     row = dbs.select(f"SELECT * FROM tracking_progress WHERE Id = {id}")
     if row:
-        return render_template("form.html", data=row[0], readonly=False, edit_mode=True)
+        return render_template("form.html", data=row[0], readonly=False, edit_mode=True, view_mode=True)
     else:
         return "Entry not found", 404
 
