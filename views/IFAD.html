@@ -48,7 +48,7 @@
                 <h5 id="complainant-info-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">II. Complainants Information</h5>
                 <form action="/action_page.php">
                   <label>a) How many Complainants are you? (You must be 2 in order for the Complaint to be admissible)</label>
-                  <input id="complainant-quantity" type="number" name="quantity" min="2" placeholder="Enter number" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" required>
+                  <input id="complainant-quantity" type="number" name="quantity" min="2" placeholder="Enter number" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" value="{{ data['complainant-quantity'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                 </form>
                 <br>
                 <div class="form-group">
@@ -88,7 +88,7 @@
             </div>
             <div>
               <label>c) If YES, please state why. If NO, please avail your details below</label>
-              <input id="confidentiality-option" type="text" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" required placeholder="Enter text">
+              <input id="confidentiality-option" type="text" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" required placeholder="Enter text" value="{{ data['confidentiality-option'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
             </div>
           </div>
         </div>
@@ -360,6 +360,7 @@
 </div>
 </div>  
 </div>
+<div id="readonly" style="display: none;">{% if readonly %}true{% else %}false{% endif %}</div>
 
 <script src="../static/js/sidebarscript.js"></script>
 <script>
@@ -417,37 +418,47 @@
 
 
 <script>
-  function validateAndSubmit() {
-      var requiredInputs = document.querySelectorAll('textarea[required], select[required]');
-      var isValid = true; 
-      requiredInputs.forEach(function(input) {
-          if (!input.value.trim()) {
-              isValid = false;
-              input.style.setProperty('border', '1px solid red');
-          } else {
-              input.style.setProperty('border', ''); 
-          }
-      });
-      if (isValid) {
-          submit_grievance();
-          requiredInputs.forEach(function(input) {
-              input.value = '';
-          });
+   function validateAndSubmit() {
+      var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+      if (readonly) {
           Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Submitted successfully",
-        showConfirmButton: false,
-        timer: 1500
-    });
+              title: "View Mode",
+              text: "You are currently in view mode. Editing is not allowed.",
+              icon: "info",
+              confirmButtonText: "OK"
+          });
       } else {
-        Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Please fill the field",
-        showConfirmButton: false,
-        timer: 1500
-      });
+          var requiredInputs = document.querySelectorAll('input[required], select[required]');
+          var isValid = true; 
+          requiredInputs.forEach(function(input) {
+              if (!input.value.trim()) {
+                  isValid = false;
+                  input.style.setProperty('border', '1px solid red');
+              } else {
+                  input.style.setProperty('border', ''); 
+              }
+          });
+          if (isValid) {
+              submit_grievance();
+              requiredInputs.forEach(function(input) {
+                  input.value = '';
+              });
+              Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Submitted successfully",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          } else {
+              Swal.fire({
+                  position: "center",
+                  icon: "error",
+                  title: "Please fill the field",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          }
       }
   }
   

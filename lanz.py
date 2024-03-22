@@ -30,3 +30,19 @@ def table_trackingForm():
 def delete_tracking_row(id):
     res = dbs.do(f"DELETE FROM tracking_progress WHERE Id = {id}")
     return jsonify(res)
+
+@app.route("/view_entry/<int:id>")
+def view_entry(id):
+    row = dbs.select(f"SELECT * FROM tracking_progress WHERE Id = {id}")
+    if row:
+        return render_template("form.html", data=row[0], readonly=True)
+    else:
+        return "Entry not found", 404
+    
+@app.route("/edit_entry/<int:id>", methods=["GET", "POST"])
+def edit_entry(id):
+    row = dbs.select(f"SELECT * FROM tracking_progress WHERE Id = {id}")
+    if row:
+        return render_template("form.html", data=row[0], readonly=False, edit_mode=True)
+    else:
+        return "Entry not found", 404

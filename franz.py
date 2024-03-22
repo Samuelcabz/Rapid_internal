@@ -19,3 +19,11 @@ def table_trackingForm():
 def delete_ifad_row(id):
     res = dbs.do(f"DELETE FROM grievance WHERE Id = {id}")
     return jsonify(res)
+
+@app.route("/view_entry1/<int:id>")
+def view_entry1(id):
+    row = dbs.select(f"SELECT * FROM grievance WHERE Id = {id}")
+    if row:
+        return render_template("IFAD.html", data=row[0], readonly=True)
+    else:
+        return "Entry not found", 404
