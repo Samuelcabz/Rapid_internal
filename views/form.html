@@ -15,6 +15,7 @@
                   <div class="card-body">
                     <h5 class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;"> Project Logframe Alignment</h5>
                     <hr>
+                    <input type="hidden" id="entryId" value="{{ data['Id'] if data else '' }}">
                     <div class="form-group">
                       <label for="logFrame">(Reflect Indicator Number)</label>
                       <input type="text" class="TRACKING_FORM form-control" id="logFrame" placeholder="Enter text" style="background-color:ghostwhite;" value="{{ data['logFrame'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
@@ -248,5 +249,75 @@
   function after_submit(res) {
   }
   </script>
+
+  <script>
+    function validateAndUpdate() {
+    var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+    if (readonly) {
+        Swal.fire({
+            title: "View Mode",
+            text: "You are currently in view mode. Editing is not allowed.",
+            icon: "info",
+            confirmButtonText: "OK"
+        });
+    } else {
+        var requiredInputs = document.querySelectorAll('input[required], select[required]');
+        var isValid = true; 
+        requiredInputs.forEach(function(input) {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.setProperty('border', '1px solid red');
+            } else {
+                input.style.setProperty('border', ''); 
+            }
+        });
+          if (isValid) {
+              update_tracking();
+              Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Submitted successfully",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          } else {
+              Swal.fire({
+                  position: "center",
+                  icon: "error",
+                  title: "Please fill the field",
+                  showConfirmButton: false,
+                  timer: 1500
+              });
+          }
+      }
+  }
+
+function update_tracking() {
+    var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+    if (readonly) {
+        Swal.fire({
+            title: "View Mode",
+            text: "You are currently in view mode. Editing is not allowed.",
+            icon: "info",
+            confirmButtonText: "OK"
+        });
+    } else {
+        var entryId = document.getElementById('entryId').value;
+        var tracking_form_fields = input_to_json('TRACKING_FORM');
+        $send({
+            action : `/update_entry/${entryId}`,
+            data : $DATA(tracking_form_fields),
+            method : 'POST',
+            func : after_update
+        });
+    }
+}
+
+
+function after_update(res) {
+}
+
+  </script>
+  
   
 {% endblock %}

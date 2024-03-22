@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, jsonify
+from flask import Flask, render_template, Blueprint, jsonify, request
 from modules.Connections import mysql
 
 dbs = mysql('localhost','root','','dashboard_table')
@@ -39,10 +39,23 @@ def view_entry(id):
     else:
         return "Entry not found", 404
     
-@app.route("/edit_entry/<int:id>", methods=["GET", "POST"])
+@app.route("/update_entry/<int:id>", methods=["POST"])
+def update_entry(id):
+    data = request.form
+    query = "UPDATE tracking_progress SET "
+    for key, value in data.items():
+        if key != 'Id':
+            query += f"`{key}`='{value}', "
+    query = query[:-2]
+    query += f" WHERE Id = {id}"
+    res = dbs.do(query)
+    return jsonify(res)
+
+@app.route("/edit_entry/<int:id>", methods=["GET"])
 def edit_entry(id):
     row = dbs.select(f"SELECT * FROM tracking_progress WHERE Id = {id}")
     if row:
         return render_template("form.html", data=row[0], readonly=False, edit_mode=True)
     else:
         return "Entry not found", 404
+
