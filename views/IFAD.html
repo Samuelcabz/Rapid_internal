@@ -11,8 +11,7 @@
       <div class="text-center mb-4">
         <label>Alleged non-compliance with its social and environmental policies and mandatory aspects of its social, environmental and climate assessment procedures (SECAP)</label>
       </div>
-      <br>
-      
+      <br>    
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
@@ -21,6 +20,7 @@
               <div class="col-md-6">
                 <h5 id="nature-complaint-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">I. Nature of The Complaint</h5>
                 <div class="dropdown">
+                  <input type="hidden" id="entryId" value="{{ data['Id'] if data else '' }}">
                   <div class="form-group">
                     <label>What complaint are you making to IFAD? (Choose the one(s) applicable to your complaint)</label>
                     <select id="type-complaint" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" {% if readonly %}disabled{% endif %} required>
@@ -93,8 +93,7 @@
           </div>
         </div>
       </div>
-      <br>
-      
+      <br>     
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
@@ -106,15 +105,13 @@
                 <div class="row">
                   <div class="col-md-6">
                     <label>Full Name</label>
-                    <input id="complainant-1-fullname" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Name" style="background-color: ghostwhite;" value="{{ data['complainant-1-fullname'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
-                 
+                    <input id="complainant-1-fullname" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Name" style="background-color: ghostwhite;" value="{{ data['complainant-1-fullname'] if data else '' }}" {% if readonly %}readonly{% endif %} required>                
                   </div>
                   <div class="col-md-6">
                     <label>Title</label>
                     <input id="complainant-1-title" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Title" style="background-color: ghostwhite;" value="{{ data['complainant-1-title'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                   </div>
-                </div>
-                
+                </div>              
                 <div class="row">
                   <div class="col-md-6">
                     <label>Organisation</label>
@@ -129,14 +126,11 @@
                 <input id="complainant-1-email" type="email" class="GRIEVANCE_FORM form-control" placeholder="Enter Email" style="background-color: ghostwhite;" value="{{ data['complainant-1-email'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
               </div>
               <div class="col-md-6">
-                <h5 id="location-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">Location</h5>
-                
+                <h5 id="location-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">Location</h5>                
                 <label>Your address/location</label>
-                <input id="complainant-1-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" value="{{ data['complainant-1-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
-                
+                <input id="complainant-1-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" value="{{ data['complainant-1-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>               
                 <label>Mailing Address (if different)</label>
-                <input id="complainant-1-mailing-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" value="{{ data['complainant-1-mailing-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
-                
+                <input id="complainant-1-mailing-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" value="{{ data['complainant-1-mailing-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>               
                 <label>Additional guidance on how to locate you (if applicable)</label>
                 <input id="complainant-1-additional-guidance" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" value="{{ data['complainant-1-additional-guidance'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
               </div>
@@ -162,8 +156,7 @@
                     <label>Title</label>
                     <input id="complainant-2-title" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Title" style="background-color: ghostwhite;" value="{{ data['complainant-2-title'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                   </div>
-                </div>
-                
+                </div>               
                 <div class="row">
                   <div class="col-md-6">
                     <label>Organisation</label>
@@ -173,20 +166,16 @@
                     <label>Phone Number</label>
                     <input id="complainant-2-phone" type="tel" class="GRIEVANCE_FORM form-control" placeholder="(+63XX XXXX XXX)" maxlength="11" id="num2" style="background-color: ghostwhite;" value="{{ data['complainant-2-phone'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                   </div>
-                </div>
-                
+                </div>                
                 <label>Email </label>
                 <input id="complainant-2-email" type="email" class="GRIEVANCE_FORM form-control" placeholder="Enter Email" style="background-color: ghostwhite;" value="{{ data['complainant-2-email'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
               </div>
               <div class="col-md-6">
-                <h5 id="location-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">LOCATION</h5>
-                
+                <h5 id="location-2-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">LOCATION</h5>               
                 <label>Your address/location</label>
-                <input id="complainant-2-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" value="{{ data['complainant-2-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
-                
+                <input id="complainant-2-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Addresss/Location" style="background-color: ghostwhite;" value="{{ data['complainant-2-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>               
                 <label>Mailing Address (if different) </label>
-                <input id="complainant-2-mailing-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" value="{{ data['complainant-2-mailing-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
-                
+                <input id="complainant-2-mailing-address" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Mailing Address" style="background-color: ghostwhite;" value="{{ data['complainant-2-mailing-address'] if data else '' }}" {% if readonly %}readonly{% endif %} required>            
                 <label>Additional guidance on how to locate you (if applicable)</label>
                 <input id="complainant-2-additional-guidance" type="text" class="GRIEVANCE_FORM form-control" placeholder="Enter Additional Guidance" style="background-color: ghostwhite;" value="{{ data['complainant-2-additional-guidance'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
               </div>
@@ -194,8 +183,7 @@
           </div>
         </div>
       </div>
-      <br>
-      
+      <br>      
     </head>
     <body>
       <div class="card">
@@ -207,8 +195,7 @@
             <div class="text-right">
               <button class="btn" id="addRowBtn" style="width: 120px; font-size: 14px; font-weight: bold; background-color: #264653; color: #ffffff; border-radius: 5px; margin-bottom: 10px;">Delete Row</button>
             </div>
-          </div>
-          
+          </div>          
           <div class="table-responsive">
             <table id="myTable">
               <thead>
@@ -230,34 +217,27 @@
             </table>
           </div>
         </div>
-      </div> 
-      
+      </div>       
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
-            <h5 id="ifad-project-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">V. IFAD Project / programme of concern and nature of concern</h5>
-            
+            <h5 id="ifad-project-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">V. IFAD Project / programme of concern and nature of concern</h5>           
             <label>a) Which IFAD-supported project/programme are you concerned about? (please provide the Project/Programme name, if known):</label>
-            <input id="ifad-project-concern" type="text" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" value="{{ data['ifad-project-concern'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
-            
+            <input id="ifad-project-concern" type="text" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" value="{{ data['ifad-project-concern'] if data else '' }}" {% if readonly %}readonly{% endif %} required>           
             <label>b) Please provide a short description of your concerns about the project/programme. Please describe, as well, the types of Environmental and Social impacts that may occur, or have occurred, as a result.</label>
-            <textarea id="ifad-project-description" class="GRIEVANCE_FORM form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-project-description'] if data else '' }}{{ id }}</textarea>
-            
+            <textarea id="ifad-project-description" class="GRIEVANCE_FORM form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-project-description'] if data else '' }}{{ id }}</textarea> 
             <label>c) When did the situation that raised your concerns start developing? (Please note that complaints must concern projects/programmes currently under design/implementation. Complaints concerning projects/programmes that preceded the operationalization of SECAP in 1/1/2015, projects that have been closed for a period of 24 months or more will not be eligible).</label>
-            <textarea id="ifad-project-situation" class="GRIEVANCE_FORM form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-project-situation'] if data else '' }}{{ id }}</textarea>
-         
+            <textarea id="ifad-project-situation" class="GRIEVANCE_FORM form-control mb-2" rows="3" placeholder="Enter text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-project-situation'] if data else '' }}{{ id }}</textarea>      
           </div>
         </div>
       </div>
-      <br>
-      
+      <br>      
       <div class="container-fluid">
         <!-- vi) PROJECT LEVEL -->
         <div class="card mb-4">
           <div class="card-body">
             <h5 id="project-level-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">VI. Project Level</h5>
-            <!-- Input fields for project level concerns -->
-            
+            <!-- Input fields for project level concerns -->  
             <div>
               <label>a) Have you raised your complaint with government representatives or NGO(s) responsible for planning or executing the project or programme or the Lead Agency or any other agency acting on behalf of IFAD?</label>         
                 <select id="raised-complaint" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" {% if readonly %}disabled{% endif %} required>
@@ -265,10 +245,8 @@
                   <option {% if data and data['raised-complaint'] == 'YES' %}selected{% endif %}>YES</option>
                   <option {% if data and data['raised-complaint'] == 'NO' %}selected{% endif %}>NO</option>
               </select>       
-            </div>
-            
-            <br> 
-            
+            </div>           
+            <br>             
             <label style="font-weight: bold;">If Yes,</label>
             <div class="button-container d-flex justify-content-between">
               <div class="text-left">
@@ -305,8 +283,7 @@
                   </table>
                 </div>
               </div>
-            </div> 
-            
+            </div>  
             <div>
               <label>b) Please explain why, if the response or actions taken are not satisfactory.</label>
               <input type="text" id="satisfactory-response" class="GRIEVANCE_FORM form-control" placeholder="Enter Text" style="background-color: ghostwhite;" value="{{ data['satisfactory-response'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
@@ -325,9 +302,7 @@
       <div class="container-fluid">
         <div class="card mb-4">
           <div class="card-body">
-            <h5 class="text-center mb-4" style="background-color: #264653; color: #ffffff; padding: 10px;">VII. IFAD Level</h5>
-            <!-- Input fields for IFAD level concerns -->
-            
+            <h5 class="text-center mb-4" style="background-color: #264653; color: #ffffff; padding: 10px;">VII. IFAD Level</h5>     
             <div class="form-group">
               <label>a) Do you disagree with the response from the IFAD Country team and Regional Division in relation to your complaint?</label>
               <select id="ifad-disagreement" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" {% if readonly %}disabled{% endif %} required>
@@ -335,27 +310,25 @@
                   <option {% if data and data['ifad-disagreement'] == 'YES' %}selected{% endif %}>YES</option>
                   <option {% if data and data['ifad-disagreement'] == 'NO' %}selected{% endif %}>NO</option>
               </select>
-            </div>
-            
+            </div>       
             <label>b) Please provide the details of the response from the IFAD Country Team and Regional Division in relation to your complaint</label>
-            <textarea id="ifad-response-details" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-response-details'] if data else '' }}{{ id }}</textarea>
-            
+            <textarea id="ifad-response-details" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-response-details'] if data else '' }}{{ id }}</textarea>           
             <label>c) Please explain why, if the response or actions taken are not satisfactory</label>
-            <textarea id="ifad-unsatisfactory-explanation" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-unsatisfactory-explanation'] if data else '' }}{{ id }}</textarea>
-            
+            <textarea id="ifad-unsatisfactory-explanation" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-unsatisfactory-explanation'] if data else '' }}{{ id }}</textarea>   
             <label>d) How do you wish to see the complaint resolved?</label>
-            <textarea id="ifad-desired-resolution" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-desired-resolution'] if data else '' }}{{ id }}</textarea>
-            
+            <textarea id="ifad-desired-resolution" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-desired-resolution'] if data else '' }}{{ id }}</textarea>  
             <label>e) Do you have any other matters or facts (including supporting documents) that you would like to share?</label>
             <textarea id="ifad-other-matters" class="GRIEVANCE_FORM form-control mb-2" placeholder="Enter Text" style="background-color: ghostwhite;" {% if readonly %}readonly{% endif %} required>{{ data['ifad-other-matters'] if data else '' }}{{ id }}</textarea>
           </div>
         </div>
       </div>
-  
-    
-    <div class="text-right">
-      <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndSubmit()">Submit</button>
-    </div>
+      <div class="text-right">
+        {% if edit_mode %}
+            <button type="submit" class="btn btn-primary" id="update" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndUpdate()">Update</button>
+        {% else %}
+            <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndSubmit()">Submit</button>
+        {% endif %}
+      </div>    
   </div>
 </div>
 </div>  
@@ -366,18 +339,14 @@
 <script>
   document.getElementById("addRowBtn").addEventListener("click", function() {
     var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow(table.rows.length);
-    
+    var newRow = table.insertRow(table.rows.length);  
     for (var i = 0; i < 4; i++) {
       var cell = newRow.insertCell(i);
       var input = document.createElement("input");
       input.type = "text";      
       cell.appendChild(input);
-    }
-    
-    
-    {
-      
+    } 
+    {  
       var actionCell = newRow.insertCell(4);
       var deleteButton = document.createElement("button");
       deleteButton.className = "deleteBtn";
@@ -386,15 +355,13 @@
         deleteRow(this);
       };
       actionCell.appendChild(deleteButton);
-    }
-    
+    }  
     function deleteRow(button) {
       var row = button.parentNode.parentNode;
       row.parentNode.removeChild(row);
     }
     
   });
-  
   document.getElementById("addRowBtn2").addEventListener("click", function() {
     var table = document.getElementById("myTable2").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.rows.length);
@@ -415,7 +382,6 @@
     }
   })
 </script>
-
 
 <script>
    function validateAndSubmit() {
@@ -460,8 +426,7 @@
               });
           }
       }
-  }
-  
+  }  
   function submit_grievance(){
               var grievance_form_fields = input_to_json('GRIEVANCE_FORM')
               println(grievance_form_fields)
@@ -476,8 +441,70 @@
           }
   </script>
 
+<script>
+  function validateAndUpdate() {
+  var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+  if (readonly) {
+      Swal.fire({
+          title: "View Mode",
+          text: "You are currently in view mode. Editing is not allowed.",
+          icon: "info",
+          confirmButtonText: "OK"
+      });
+  } else {
+      var requiredInputs = document.querySelectorAll('input[required], select[required]');
+      var isValid = true; 
+      requiredInputs.forEach(function(input) {
+          if (!input.value.trim()) {
+              isValid = false;
+              input.style.setProperty('border', '1px solid red');
+          } else {
+              input.style.setProperty('border', ''); 
+          }
+      });
+        if (isValid) {
+            update_ifad();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Updated successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Please fill the field",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+}
+
+function update_ifad() {
+  var readonly = document.getElementById('readonly').textContent.trim() === 'true';
+  if (readonly) {
+      Swal.fire({
+          title: "View Mode",
+          text: "You are currently in view mode. Editing is not allowed.",
+          icon: "info",
+          confirmButtonText: "OK"
+      });
+  } else {
+      var entryId = document.getElementById('entryId').value;
+      var grievance_form_fields = input_to_json('GRIEVANCE_FORM');
+      $send({
+          action : `/update_entry/${entryId}`,
+          data : $DATA(grievance_form_fields),
+          method : 'POST',
+          func : after_update
+      });
+  }
+}
+function after_update(res) {
+}
+</script>
+
 {%endblock%}
-
-
-
-

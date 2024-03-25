@@ -166,7 +166,7 @@
             {% else %}
                 <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold;" onclick="validateAndSubmit()">Submit</button>
             {% endif %}
-        </div>        
+          </div>        
         </div>
        </div>
       </div>
@@ -180,7 +180,7 @@
 
 <script src="../static/js/sidebarscript.js"></script>
 
-<script>
+<script> 
   function validateAndSubmit() {
       var readonly = document.getElementById('readonly').textContent.trim() === 'true';
       if (readonly) {

@@ -28,3 +28,24 @@ def view_entry1(id):
         return render_template("IFAD.html", data=row[0], readonly=True)
     else:
         return "Entry not found", 404
+    
+
+@app.route("/update_entry/<int:id>", methods=["POST"])
+def update_entry(id):
+    data = request.form
+    query = "UPDATE grievance SET "
+    for key, value in data.items():
+        if key != 'Id':
+            query += f"`{key}`='{value}', "
+    query = query[:-2]
+    query += f" WHERE Id = {id}"
+    res = dbs.do(query)
+    return jsonify(res)
+
+@app.route("/edit_entry/<int:id>", methods=["GET"])
+def edit_entry(id):
+    row = dbs.select(f"SELECT * FROM grievance WHERE Id = {id}")
+    if row:
+        return render_template("IFAD.html", data=row[0], readonly=False, edit_mode=True, view_mode=True)
+    else:
+        return "Entry not found", 404
