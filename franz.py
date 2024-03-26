@@ -24,14 +24,13 @@ def delete_ifad_row(id):
 def view_entry1(id):
     row = dbs.select(f"SELECT * FROM grievance WHERE Id = {id}")
     if row:
-        # return render_template("IFAD.html", data=row[0], readonly=False)
         return render_template("IFAD.html", data=row[0], readonly=True)
     else:
         return "Entry not found", 404
     
 
-@app.route("/update_entry/<int:id>", methods=["POST"])
-def update_entry(id):
+@app.route("/update_entry1/<int:id>", methods=["POST"])
+def update_entry1(id):
     data = request.form
     query = "UPDATE grievance SET "
     for key, value in data.items():
@@ -42,8 +41,8 @@ def update_entry(id):
     res = dbs.do(query)
     return jsonify(res)
 
-@app.route("/edit_entry/<int:id>", methods=["GET"])
-def edit_entry(id):
+@app.route("/edit_entry1/<int:id>", methods=["GET"])
+def edit_entry1(id):
     row = dbs.select(f"SELECT * FROM grievance WHERE Id = {id}")
     if row:
         return render_template("IFAD.html", data=row[0], readonly=False, edit_mode=True, view_mode=True)
