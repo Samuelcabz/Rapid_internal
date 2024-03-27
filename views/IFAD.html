@@ -17,7 +17,7 @@
               <div class="col-md-6">
                 <h5 id="nature-complaint-title" class="text-center mb-4" style="background-color: #264653; color:#ffffff; padding: 10px;">I. Nature of The Complaint</h5>
                 <div class="dropdown">
-                   <input type="hidden" id="entryId" value="{{ data['Id'] if data else '' }}">
+                   <input type="hidden" id="entryId" value="{{ data['id'] if data else '' }}">
                   <div class="form-group">
                     <label>What complaint are you making to IFAD? (Choose the one(s) applicable to your complaint)</label>
                     <select id="type-complaint" class="GRIEVANCE_FORM form-control" style="background-color: ghostwhite;" {% if readonly %}disabled{% endif %} required>
@@ -457,7 +457,7 @@
           confirmButtonText: "OK"
       });
   } else {
-      var requiredInputs = document.querySelectorAll('select[required]');
+      var requiredInputs = document.querySelectorAll('select[required], input[required], textarea[required]');
       var isValid = true; 
       requiredInputs.forEach(function(input) {
           if (!input.value.trim()) {

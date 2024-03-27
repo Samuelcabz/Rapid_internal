@@ -21,6 +21,7 @@
                                     <th>Choose SECAP</th>
                                     <th>Number of Complainants</th>
                                     <th>Are you nationals of the concerned country or living in the area?</th>
+                                    <th>Timestamp</th>
                                     <th>Action</th>
                                 </tr>
                                     </thead>
@@ -32,6 +33,12 @@
                                         <td>{{ row['SECAP'] }}</td>
                                         <td>{{ row['complainant-quantity'] }}</td>
                                         <td>{{ row['nationality'] }}</td>
+                                        <td> {{ row['date_created'] }}<br>
+                                            {% if row['date_modified'] %}
+                                            <i style="font-size: smaller;color: #00cc66;">Updated: {{ row['date_modified'] | format_timestamp
+                                            }}</i>
+                                            {% endif %}</i>
+                                        </td>
                                         <td>
                                             <div style="display: flex; gap: 5px;">
                                                 <a href="/view_entry1/{{ row['id']}}?qs=internal" class="btn-link btn-sm view-btn" style="cursor:pointer;">View</a>        
