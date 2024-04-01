@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from modules.Connections import mysql
 from datetime import datetime, timedelta
 import franz
@@ -24,11 +24,10 @@ def insert(TABLE):
     values = ""
     for ids in request.form:
         coloumn += f",`{ids}`"
-        values += f",'{request.form[ids]}'"
+        values += f",'{request.form[ids]}' "
     res = dbs.do(f"INSERT {TABLE} ({coloumn[1:]}) VALUES ({values[1:]})")
     return jsonify(res)
     
-
 def format_timestamp(timestamp):
     now = datetime.now()
     time_difference = now - timestamp
@@ -50,7 +49,7 @@ def format_timestamp(timestamp):
         return f"{hours_ago} hour{'s' if hours_ago != 1 else ''} ago"
     else:
         return timestamp.strftime("%Y-%m-%d %H:%M:%S")
-    
-app.jinja_env.filters['format_timestamp'] = format_timestamp
+
+app.jinja_env.filters['format_timestamp'] = format_timestamp     
 
 app.run(debug=True)

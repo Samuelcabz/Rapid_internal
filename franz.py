@@ -12,7 +12,7 @@ def ifadForm():
 
 @app.route("/IFAD_Table")
 def table_trackingForm():
-    rows = dbs.select("SELECT `id`, `type-complaint`, `SECAP`, `complainant-quantity`, `nationality` , `date_created`, `date_modified`  FROM grievance")
+    rows = dbs.select("SELECT `id`, `type-complaint`, `SECAP`, `complainant-quantity`, `nationality`, `date_created`, `date_modified`  FROM grievance")
     return render_template("IFADtable.html", rows=rows)
 
 @app.route("/delete/IFAD_Table/<id>", methods=["DELETE"])
