@@ -1,6 +1,7 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 from modules.Connections import mysql
 from datetime import datetime, timedelta
+from spreadsheet import csv_import as import_csv
 import franz
 import lanz
 import andz
@@ -17,6 +18,11 @@ app.register_blueprint(franz.app)
 app.register_blueprint(lanz.app)
 app.register_blueprint(andz.app)
 
+
+@app.route('/importcsv',methods = ['GET','POST'])
+def importcsv():
+	import_csv.importcsv(request)
+	return redirect("/form1_dashboard")
 
 @app.route("/insert/<TABLE>", methods=["POST", "GET"])
 def insert(TABLE):

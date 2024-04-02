@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <script src="../static/js/sidebarscript.js"></script>
+<style>
+
+
+    .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #339966;
+  }
+  
+  .button1:hover {
+    background-color: #339966;
+    color: white;
+  }
+  </style>
+
+  <div class="card"
+    style=" width:60%;   margin: 0 auto; margin-top: 20px; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  
+    <div class="card-header bg-fav" style="background: #264653;">
+      <h3 style="color: white; text-align: center;">IMPORT / EXPORT<div
+          class="h4 fw-bolder">SPREADSHEET MANAGEMENT</div>
+      </h3>
+    </div>
+    <div class="card-body" style="background-color: #f8f7ff;">
+  
+  
+      <form action="/importcsv" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <div class="form-row">
+  
+            <div class="col">
+              <strong>
+                <label for="position">Import Data:</label>
+              </strong><br>
+              <div class="file-upload">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileName">Choose File</div>
+                  <div class="file-select-name" id="noFile">No file chosen...</div>
+                  <input multiple type="file"
+                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                    name="chooseFile" id="chooseFile" required>
+  
+                </div>
+              </div>
+              <br>
+              <button type="submit"  class="btn btn-primary"><span><i class="fa-solid fa-upload"></i></span> Import</button>
+  
+              <span onclick="download_login_start('DCF_Form_1.xlsx')"  class="btn btn-primary"><span><i class="fa-solid fa-file-excel"></i></span> Download form 1 excel template</span>
+            </div>
+          </div>
+      </form>
+  
+    </div>
+  </div>
+  </div>
+
+  {% endblock %}

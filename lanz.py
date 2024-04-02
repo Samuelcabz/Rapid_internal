@@ -15,11 +15,13 @@ def index():
 def homepage():
     return render_template("Home.html")
 
+@app.route("/spreadsheet")
+def excelupload():
+    return render_template("excel.html")
 
 @app.route("/Tracking_Form")
 def trackingForm():
     return render_template("form.html")
-
 
 @app.route("/Tracking_Table")
 def table_trackingForm():
