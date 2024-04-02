@@ -16,37 +16,46 @@
                                         <h5 id="tableListHeader" style="color: #264653; padding: 10px; margin-bottom: 0;">TABLE LIST</h5>
                                     </div>                                    
                                     <div class="table-responsive">
-                                        <table id="dataTable" class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th id="imageHeader" class="text-center">IMAGE</th>
-                                                    <th id="nameHeader" class="text-center">Name</th>
-                                                    <th id="rcuHeader" class="text-center">RCU</th>
-                                                    <th id="pcuHeader" class="text-center">PCU</th>
-                                                    <th id="designationHeader" class="text-center">DESIGNATION</th>
-                                                    <th id="statusHeader" class="text-center">STATUS</th>
-                                                </tr>
-                                            </thead>
+                                        <div id="data_info" class="box">
+                                            <table id="dataTable" class="table table-striped">
+                                                <thead>
+                                            <tr>
+                                                <th>IMAGE</th>
+                                                <th>ID</th>
+                                                <th>NAME</th>
+                                                <th>PCU</th>
+                                                <th>RCU</th>
+                                                <th>DESIGNATION</th>
+                                                <th>STATUS</th>
+                    
+                                            </tr>
+                                                </thead>
                                             <tbody>
+                                                {% for row in rows %}
                                                 <tr>
+                                                    
                                                     <td id="profileImageCell" class="text-center">
                                                         <div class="profile-image-container">
                                                             <img src="https://pixlr.com/images/index/ai-image-generator-one.webp" alt="Profile Image" class="profile-image">
                                                         </div>
                                                     </td>
-                                                    <td id="nameCell" class="text-center">Dee T. Ayye</td>
-                                                    <td id="rcuCell" class="text-center">Region XIII - Caraga</td>
-                                                    <td id="pcuCell" class="text-center">Surigao del Sur</td>
-                                                    <td id="designationCell" class="text-center">Developer</td>
+                                                    <td>{{ row['id']}}</td>
+                                                    <td>{{ row['name']}}</td>
+                                                    <td>{{ row['pcu'] }}</td>
+                                                    <td>{{ row['rcu'] }}</td>
+                                                    <td>{{ row['job'] }}</td>
                                                     <td id="statusCell" class="text-center">
                                                         <div class="status-container">
                                                             <input id="statusSwitch" checked="true" type="checkbox" class="switch" onchange="updateStatus()">
                                                             <span id="statusText">ACTIVE</span>
                                                         </div>
                                                     </td>
+
                                                 </tr>
+                                                {% endfor %}
                                             </tbody>
                                         </table>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
@@ -76,4 +85,23 @@
             }
             
     </script>
+
+<script>
+    function eventFired(type) {
+        let eventInfo = document.querySelector('#data_info');
+        if (type !== 'Search' && type !== 'Page' && type !== 'Order') { 
+            eventInfo.innerHTML += '<div>' + type + ' event - ' + new Date().getTime() + '</div>';
+            eventInfo.scrollTop = eventInfo.scrollHeight;
+        }
+    }
+    
+    $(document).ready(function() {
+        let dataTable = new DataTable('#dataTable', {
+            searching: true
+        });
+        dataTable.on('order.dt', () => eventFired('Order'))
+                 .on('search.dt', () => eventFired('Search'))
+                 .on('page.dt', () => eventFired('Page'));
+    });
+</script>
 {% endblock %}

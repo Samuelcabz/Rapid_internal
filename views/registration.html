@@ -71,12 +71,12 @@
                                 <label for="rcu">RCU</label>
                                 <select class="REG_FORM form-control" id="rcu" name="rcu" style="font-size: 12px; height: 40px; background-color: ghostwhite;" onchange="updatePCUOptions()" {% if readonly %}disabled{% endif %} required>
                                     <option value="" disabled selected>Select option</option>
-                                    <option value="8"{% if data and data['rcu'] == 8 %}selected{% endif %}>Region VIII - Eastern Visayas</option>
-                                    <option value="9"{% if data and data['rcu'] == 9 %}selected{% endif %}>Region IX - Zamboanga Peninsula</option>
-                                    <option value="10"{% if data and data['rcu'] == 10 %}selected{% endif %}>Region X- Northern Mindanao</option>
-                                    <option value="11"{% if data and data['rcu'] == 11 %}selected{% endif %}>Region XI - Davao Region</option>
-                                    <option value="12"{% if data and data['rcu'] == 12 %}selected{% endif %}>Region XII - SOCCSKSARGEN</option>
-                                    <option value="13"{% if data and data['rcu'] == 13 %}selected{% endif %}>Region XIII - Caraga</option>
+                                    <option value="Region VIII - Eastern Visayas"{% if data and data['rcu'] == 8 %}selected{% endif %}>Region VIII - Eastern Visayas</option>
+                                    <option value="Region IX - Zamboanga Peninsula"{% if data and data['rcu'] == 9 %}selected{% endif %}>Region IX - Zamboanga Peninsula</option>
+                                    <option value="Region X- Northern Mindanao"{% if data and data['rcu'] == 10 %}selected{% endif %}>Region X- Northern Mindanao</option>
+                                    <option value="Region XI - Davao Region"{% if data and data['rcu'] == 11 %}selected{% endif %}>Region XI - Davao Region</option>
+                                    <option value="Region XII - SOCCSKSARGEN"{% if data and data['rcu'] == 12 %}selected{% endif %}>Region XII - SOCCSKSARGEN</option>
+                                    <option value="Region XIII - Caraga"{% if data and data['rcu'] == 13 %}selected{% endif %}>Region XIII - Caraga</option>
                                 </select>
                             </div>
 
@@ -197,40 +197,40 @@
 
             // Add PCU options based on selected RCU
             switch (selectedRCU) {
-                case '8': // Region VIII - Eastern Visayas
+                case 'Region VIII - Eastern Visayas': // Region VIII - Eastern Visayas
                     addOption(pcuSelect, 'BARMM', 'BARMM');
-                    addOption(pcuSelect, 'maguindanao', 'Maguindanao');
-                    addOption(pcuSelect, 'bukidnon', 'Bukidnon');
+                    addOption(pcuSelect, 'Maguindanao', 'Maguindanao');
+                    addOption(pcuSelect, 'Bukidnon', 'Bukidnon');
                     break;
 
-                case '10': // Region X - Northern Mindanao
-                    addOption(pcuSelect, 'lanao del norte', 'Lanao del Norte');
-                    addOption(pcuSelect, 'lanao del sur', 'Lanao del Sur');
+                case 'Region X - Northern Mindanao': // Region X - Northern Mindanao
+                    addOption(pcuSelect, 'Lanao del Norte', 'Lanao del Norte');
+                    addOption(pcuSelect, 'Lanao del Sur', 'Lanao del Sur');
                     break;
 
-                case '11': // Region XI - Davao Region
-                    addOption(pcuSelect, 'davao oriental', 'Davao Oriental');
-                    addOption(pcuSelect, 'davao del norte', 'Davao del Norte');
-                    addOption(pcuSelect, 'davao del sur', 'Davao del Sur');
-                    addOption(pcuSelect, 'davao occidental', 'Davao Occidental');
+                case 'Region XI - Davao Region': // Region XI - Davao Region
+                    addOption(pcuSelect, 'Davao Oriental', 'Davao Oriental');
+                    addOption(pcuSelect, 'Davao del Norte', 'Davao del Norte');
+                    addOption(pcuSelect, 'Davao del Sur', 'Davao del Sur');
+                    addOption(pcuSelect, 'Davao Occidental', 'Davao Occidental');
                     break;
 
-                case '12': // Region XII - SOCCSKSARGEN
-                    addOption(pcuSelect, 'north cotobato', 'North Cotobato');
-                    addOption(pcuSelect, 'sultan kudarat', 'Sultan Kudarat');
-                    addOption(pcuSelect, 'sarangani', 'Sarangani');
+                case 'Region XII - SOCCSKSARGEN': // Region XII - SOCCSKSARGEN
+                    addOption(pcuSelect, 'North Cotobato', 'North Cotobato');
+                    addOption(pcuSelect, 'Sultan Kudarat', 'Sultan Kudarat');
+                    addOption(pcuSelect, 'Sarangani', 'Sarangani');
                     break;
 
-                case '13': // Region XIII - Caraga
-                    addOption(pcuSelect, 'agusan del norte', 'Agusan del Norte');
-                    addOption(pcuSelect, 'agusan del sur', 'Agusan del Sur');
-                    addOption(pcuSelect, 'surigao del sur', 'Surigao del Sur');
+                case 'Region XIII - Caraga': // Region XIII - Caraga
+                    addOption(pcuSelect, 'Agusan del Norte', 'Agusan del Norte');
+                    addOption(pcuSelect, 'Agusan del Sur', 'Agusan del Sur');
+                    addOption(pcuSelect, 'Surigao del Sur', 'Surigao del Sur');
                     break;
 
-                case '9': // Region IX - Zamboanga Peninsula
-                    addOption(pcuSelect, 'zamboanga del norte', 'Zamboanga del Norte');
-                    addOption(pcuSelect, 'zambuanga sibugay', 'Zamboanga Sibugay');
-                    addOption(pcuSelect, 'zamboanga del sur', 'Zamboanga del Sur');
+                case 'Region IX - Zamboanga Peninsula': // Region IX - Zamboanga Peninsula
+                    addOption(pcuSelect, 'Zamboanga del Norte', 'Zamboanga del Norte');
+                    addOption(pcuSelect, 'Zamboanga Sibugay', 'Zamboanga Sibugay');
+                    addOption(pcuSelect, 'Zamboanga del Sur', 'Zamboanga del Sur');
                     break;
             }
         }
