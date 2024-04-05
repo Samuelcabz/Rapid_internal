@@ -36,7 +36,7 @@
                                                     
                                                     <td id="profileImageCell" class="text-center">
                                                         <div class="profile-image-container">
-                                                            <img src="https://pixlr.com/images/index/ai-image-generator-one.webp" alt="Profile Image" class="profile-image">
+                                                            <img src="" alt="Profile Image" class="profile-image">
                                                         </div>
                                                     </td>
                                                     <td>{{ row['id']}}</td>
@@ -44,13 +44,12 @@
                                                     <td>{{ row['pcu'] }}</td>
                                                     <td>{{ row['rcu'] }}</td>
                                                     <td>{{ row['job'] }}</td>
-                                                    <td id="statusCell" class="text-center">
+                                                    <td class="text-center">
                                                         <div class="status-container">
-                                                            <input id="statusSwitch" checked="true" type="checkbox" class="switch" onchange="updateStatus()">
-                                                            <span id="statusText">ACTIVE</span>
+                                                            <input id="statusSwitch{{ loop.index }}" checked="true" type="checkbox" class="switch" onchange="updateStatus(this)">
+                                                            <span class="statusText">ACTIVE</span>
                                                         </div>
                                                     </td>
-
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>
@@ -67,23 +66,20 @@
 
     <script src="../static/js/sidebarscript.js"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
+        function updateStatus(statusSwitch) {
+            var statusText = statusSwitch.parentNode.querySelector('.statusText');
 
-            function updateStatus() {
-                var statusSwitch = document.getElementById('statusSwitch');
-                var statusText = document.getElementById('statusText');
-
-                if (statusSwitch.checked) {
-                    statusText.innerText = 'ACTIVE';
-                    statusText.style.color = 'green';
-                    statusText.style.fontWeight = 'bold';
-                } else {
-                    statusText.innerText = 'INACTIVE';
-                    statusText.style.color = 'red';
-                    statusText.style.fontWeight = 'bold';
-                }
+            if (statusSwitch.checked) {
+                statusText.innerText = 'ACTIVE';
+                statusText.style.color = 'green';
+                statusText.style.fontWeight = 'bold';
+            } else {
+                statusText.innerText = 'INACTIVE';
+                statusText.style.color = 'red';
+                statusText.style.fontWeight = 'bold';
             }
-            
+        }
     </script>
 
 <script>

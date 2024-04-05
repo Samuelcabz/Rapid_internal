@@ -18,7 +18,7 @@ def get_users():
 
 @app.route("/reg_Table")
 def table_reg():
-    rows = dbs.select("SELECT `id`, `name`, `rcu`, `pcu`, `job` FROM users")
+    rows = dbs.select("SELECT `id`, `name`, `rcu`, `pcu`, `job`, `uploadImage` FROM users")
     return render_template("reg_additional.html", rows=rows)
 
 

@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, redirect
 from modules.Connections import mysql
-from datetime import datetime, timedelta
+from datetime import datetime
 from spreadsheet import csv_import as import_csv
 import franz
 import lanz
