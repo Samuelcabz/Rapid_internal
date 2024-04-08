@@ -129,13 +129,15 @@
     
     $(document).ready(function() {
         let dataTable = new DataTable('#dataTable', {
-            searching: true
+            searching: true,
+            order: [[0, 'desc']]
         });
         dataTable.on('order.dt', () => eventFired('Order'))
                  .on('search.dt', () => eventFired('Search'))
                  .on('page.dt', () => eventFired('Page'));
     });
 </script>
+
 
 
 <script src="../static/js/sidebarscript.js"></script>
