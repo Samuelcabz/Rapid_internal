@@ -5,6 +5,7 @@ from spreadsheet import csv_import as import_csv
 import franz
 import lanz
 import andz
+from modules.Req_Brorn_util import file_from_request
 
 dbs = mysql('localhost','root','','dashboard_table')
 app = Flask(__name__, template_folder="views")
@@ -28,12 +29,17 @@ def importcsv():
 def insert(TABLE):
     coloumn = ""
     values = ""
+    files = request.files.getlist("uploadImage0")
+    FILE_REQ = file_from_request(app)
+    __f = FILE_REQ.save_file_from_request(request,"uploadImage0","static/img/profile_pics/",False,False)
     for ids in request.form:
         coloumn += f",`{ids}`"
         values += f",'{request.form[ids]}' "
     res = dbs.do(f"INSERT {TABLE} ({coloumn[1:]}) VALUES ({values[1:]})")
     return jsonify(res)
-    
+
+# ====================================================
+
 def format_timestamp(timestamp):
     now = datetime.now()
     time_difference = now - timestamp

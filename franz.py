@@ -48,3 +48,8 @@ def edit_entry1(id):
         return render_template("IFAD.html", data=row[0], readonly=False, edit_mode=True, view_mode=True)
     else:
         return "Entry not found", 404
+    
+@app.route("/get_grievance_data")
+def get_grievance_data():
+    grievance_data = dbs.select("SELECT * FROM grievance")
+    return jsonify(grievance_data)

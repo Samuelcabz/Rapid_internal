@@ -10,7 +10,6 @@ app = Blueprint("lanz",__name__)
 def index():
     return render_template("Home.html")
 
-
 @app.route("/Home") 
 def homepage():
     return render_template("Home.html")
@@ -61,3 +60,7 @@ def edit_entry(id):
     else:
         return "Entry not found", 404
 
+@app.route("/get_tracking_data")
+def get_tracking_data():
+    tracking_data = dbs.select("SELECT * FROM tracking_progress")
+    return jsonify(tracking_data)

@@ -3,7 +3,7 @@ from datetime import date, datetime
 import os, json
 import rsa
 import base64
-import Configurations as c
+# import Configurations as c
 from functools import wraps
 
 class file_from_request:

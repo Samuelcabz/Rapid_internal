@@ -27,16 +27,14 @@
                                                 <th>RCU</th>
                                                 <th>DESIGNATION</th>
                                                 <th>STATUS</th>
-                    
                                             </tr>
                                                 </thead>
                                             <tbody>
                                                 {% for row in rows %}
                                                 <tr>
-                                                    
                                                     <td id="profileImageCell" class="text-center">
                                                         <div class="profile-image-container">
-                                                            <img src="" alt="Profile Image" class="profile-image">
+                                                            <img src="/static/img/profile_pics/_{{ row['uploadImage'] | replace('C:fakepath','') }}" oncontextmenu="return false;" draggable="false" alt="Profile Picture">
                                                         </div>
                                                     </td>
                                                     <td>{{ row['id']}}</td>

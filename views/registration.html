@@ -80,7 +80,7 @@
                     <h4>REGISTRATION FORM</h4>
                 </div>
                 <div class="card-body">
-                    <form id="signupForm">
+                    <!-- <form id="signupForm" enctype="multipart/form-data"> -->
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label>Last Name</label>
@@ -103,7 +103,7 @@
 
                             <div class="form-group col-md-6">
                                 <label>Mobile Number</label>
-                                <input type="tel" class="REG_FORM form-control" id="mobile" name="phoneNumber" placeholder="e.g. 0000-000-0000" required style="background-color: ghostwhite; height: 40px;" pattern="[0-9]+" maxlength="11" value="{{ data['mobile'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
+                                <input type="tel" class="REG_FORM form-control" id="mobile" name="phoneNumber" placeholder="e.g. 0000-000-0000" style="background-color: ghostwhite; height: 40px;" pattern="[0-9]+" maxlength="11" value="{{ data['mobile'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                             </div>
                         </div>
 
@@ -169,7 +169,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="dateUntil">Until</label>
-                                <input type="date" id="dateUntil" name="dateUntil" class="form-control" style="font-size: 12px; height: 40px; background-color: ghostwhite;" value="{{ data['dateUntil'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
+                                <input type="date" id="dateUntil" name="dateUntil" class="REG_FORM form-control" style="font-size: 12px; height: 40px; background-color: ghostwhite;" value="{{ data['dateUntil'] if data else '' }}" {% if readonly %}readonly{% endif %} required>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -186,7 +186,7 @@
                             <div class="text-left">
                                 <div class="file-select">
                                     <label for="uploadImage" style="width: 150px; font-size: 18px; font-weight: bold; border-top: 10px;"> 
-                                    <input type="file" class="REG_FORM file-select-label" name="uploadImage" id="uploadImage" accept="image/*" value="{{ data['uploadImage'] if data else '' }}" {% if readonly %}readonly{% endif %} required>                       
+                                        <input accept="image/*" multiple novalidate type="file" class="REG_FORM file-select-label" id="uploadImage" accept="image/*" {% if readonly %}readonly{% endif %} required>                       
                                     </label>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                                 <button type="submit" class="btn btn-primary" id="submit" style="width: 150px; font-size: 18px; font-weight: bold; margin-top: 10px;" onclick="validateAndSubmit()">Sign Up</button>
                             </div>
                         </div>                                                
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
@@ -308,21 +308,11 @@
                     isValid = false;
                     input.style.setProperty('border', '1px solid red');
                 } else {
-                    input.style.setProperty('border', ''); 
+                    input.style.setProperty('border', '');
                 }
             });
             if (isValid) {
                 submit_tracking();
-                requiredInputs.forEach(function(input) {
-                    input.value = '';
-                });
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Submitted successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
             } else {
                 Swal.fire({
                     position: "center",
@@ -346,9 +336,12 @@
             });
         } else {
             var users_form_fields = input_to_json('REG_FORM');
+            var _img = $ID('uploadImage')
+            var _data_foem = $DATA(users_form_fields).appendFile(_img)
+            println(_data_foem.values())
             $send({
                 action : "/insert/users",
-                data : $DATA(users_form_fields),
+                data : _data_foem,
                 method : 'POST',
                 func : after_submit
             });
@@ -356,6 +349,15 @@
     }
     
     function after_submit(res) {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Submitted successfully",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function(){
+        });
+        println(res)
     }
     </script>
 
