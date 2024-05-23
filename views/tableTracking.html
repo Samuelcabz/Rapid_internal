@@ -1,10 +1,80 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-fluid">
-        <div class="text-center mb-4" style="margin-bottom: 1rem!important;">
-            <h4 style="background-color: #264653; color: #fff; padding: 10px;">TRACKING PROGRESS TABLE</h4>
-        </div>  
+
+<style>
+    .container-row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .container {
+        text-align: center;
+        background-color: #fefae0;
+        border-radius: 5px;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+        flex: 1;
+        margin: 10px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .container p {
+        font-size: 1rem;
+        color: #2c2929;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .container h3 {
+        font-size: 1.8rem;
+        color: #1b1a1a;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        .container p,
+        .container h3 {
+            font-size: 16px;
+        }
+    }
+    </style>
+
+<div class="text-center mb-4" style="margin-bottom: 1rem!important;">
+    <h4 style="background-color: #264653; color: #fff; padding: 10px;">TRACKING PROGRESS DASHBOARD</h4>
+</div> 
+
+<div class="container-row">
+    <div class="container" style="background: #ffffff;">
+        <p>FEMALES</p>
+        <i class="fas fa-female" style="display: inline-block; font-size: 2.5rem; margin-right: 7px; color: #2c2929;"></i><h3  style="display: inline-block;" id="totalFemales"></h3>
+    </div>
+    <div class="container" style="background: #ffffff;">
+        <p>MALES</p>
+        <i class="fas fa-male" style="display: inline-block; font-size: 2.5rem; margin-right: 7px;color: #2c2929;"></i><h3 style="display: inline-block;" id="totalMales"></h3>
+    </div>
+    <div class="container" style="background: #ffffff;">
+        <p>PWD</p>
+        <i class="fas fa-wheelchair" style="display: inline-block; font-size: 2.5rem; margin-right: 7px; color: #2c2929;"></i><h3 style="display: inline-block;" id="totalPwd"></h3>
+    </div>
+    <div class="container" style="background: #ffffff;">
+        <p>YOUTH</p>
+        <i class="fas fa-child" style="display: inline-block; font-size: 2.5rem; margin-right: 7px; color: #2c2929;"></i><h3 style="display: inline-block;" id="totalYouth"></h3>
+    </div>
+    <div class="container" style="background: #ffffff;">
+        <p>IP</p>
+        <i class="fas fa-user" style="display: inline-block; font-size: 2.5rem; margin-right: 7px; color: #2c2929;"></i><h3 style="display: inline-block;" id="totalIP"></h3>
+    </div>
+</div>  
+<br>
+<div class="container-fluid"> 
         <div class="card">
             <div class="card-body">                              
                 <div class="table-responsive">
@@ -55,6 +125,22 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    fetch('/get_tracking_data')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('totalFemales').innerText = numberWithCommas(data.reduce((total, entry) => total + entry.Females, 0));
+            document.getElementById('totalMales').innerText = numberWithCommas(data.reduce((total, entry) => total + entry.Males, 0));
+            document.getElementById('totalPwd').innerText = numberWithCommas(data.reduce((total, entry) => total + entry.PWD, 0));
+            document.getElementById('totalYouth').innerText = numberWithCommas(data.reduce((total, entry) => total + entry.Youth, 0));
+            document.getElementById('totalIP').innerText = numberWithCommas(data.reduce((total, entry) => total + entry.IP, 0));
+        });
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
 
 <script>
     document.querySelectorAll('.delete-btn').forEach(button => {
